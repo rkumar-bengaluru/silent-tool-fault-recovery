@@ -1,0 +1,42 @@
+\section{Related work}\label{sec:related}
+\paragraph{Silent tool failures.} Benchmarks inject tool perturbations and find implicit failures
+harder than explicit ones~\cite{zhu2026tools}, and agents often fail to detect results that come back
+well formed but wrong~\cite{kraishan2026loud}, or, under repeated poisoning, adopt them
+even after checking~\cite{anon2026tools}. AgentFaultBench checks recovery against the resulting state as well as the
+agent's response~\cite{gupta2026agentfaultbench}; RITE studies silent wrong values in multi-step
+e-commerce agents~\cite{zhang2026rite}. A verification-first monitor that issues corrective directives
+improves recovery from tool failures on a real filesystem~\cite{kaynar2026tools}, and recoveries after
+partial executions can themselves harm the external state~\cite{trofimov2026agent}. We share their
+concern with faults that look like success, and add a comparison of triggers with recovery held fixed.
+
+\paragraph{Read-back and contracts.} Runtime monitors of action preconditions and postconditions drive
+replanning in classical planning~\cite{cardoso2026rvreplan}. For LLM agents, verified tool calls address
+non-atomic behaviour such as delayed visibility and partial updates~\cite{mansoor2026verified}, and
+LIMBO asks whether exactly-once behaviour belongs in the model, the harness or the tool
+contract~\cite{li2026where}. Outcome Monitors check results against outcome contracts and issue a
+receipt on a violation~\cite{panthi2026outcome}; SilentGuard enforces invariants in the
+harness~\cite{dip2026invariantaware}; RECEIPT measures and repairs the assumption that a call returns
+with its action finished~\cite{yang2026receipt}. Our read-back and contract triggers are simplified
+versions of these ideas, and our read-back is idealised (Section~\ref{sec:method}), so that the
+comparison is about the trigger and not its engineering.
+
+\paragraph{When to intervene.} Recovery can rescue a failing trajectory or disrupt a good
+one~\cite{xiao2026harnesses}, and agents often recover on their own if left alone~\cite{duan2026intervene}.
+Uncertainty is a common but unproven signal for when to correct an agent~\cite{li2026uncertainty}, a
+calibrated failure score need not say whether intervening helps~\cite{zhang2026calibration}, and a gate
+that only replaces a proposal can act only where the base policy was already
+wrong~\cite{sethi2026consistency}. Middleware can cue an
+agent when it overlooks execution feedback~\cite{yang2026beyond}, and how an error is delivered changes
+what the agent does next~\cite{woo2026same}. The choice between repairing, replanning and abandoning a
+plan has been studied in theory~\cite{tewari2026ai}, repair has been compared with replanning
+empirically~\cite{yuan2026replan}, and trajectory studies trace where errors enter and which controls
+reach them~\cite{wang2026dependable}. Our \texttt{always} and \texttt{on\_uncertainty} arms are the
+simplest such policies.
+
+\paragraph{Replanning and self-correction.} Agents can replan from environment
+feedback~\cite{sun2023adaplanner}, decompose sub-tasks they fail to execute~\cite{prasad2023adapt},
+verbally reflect on task feedback~\cite{shinn2023reflexion} or refine their outputs with
+self-feedback~\cite{madaan2023selfrefine}. Each of these acts on a failure signal; a silent fault
+provides none. Without an external signal, models struggle to correct their own
+reasoning~\cite{huang2023large}. Our triggers supply that external signal; the recovery itself is left
+to the model.

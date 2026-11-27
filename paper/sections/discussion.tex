@@ -1,0 +1,39 @@
+\section{Discussion}\label{sec:discussion}
+\paragraph{Detection and repair are separate problems (exploratory).} Apart from flagging every step, read-back is the
+only trigger that flags silent write faults reliably, and it does so on all three models; the
+uncertainty trigger catches a few by chance. Whether a flag turns
+into success depends on the model. A dropped write is repaired by repeating the call, which Haiku
+usually does and Qwen3-8B sometimes does, while Qwen3-4B almost never gets there. A wrong-value or
+partial write needs the agent to find what changed and undo it, which only Haiku does often. This
+matches reports that, under repeated poisoning, agents adopt wrong answers even after
+checking~\cite{anon2026tools}, and that a monitor which issues corrective directives improves
+recovery~\cite{kaynar2026tools}. Telling the agent \emph{what} differed from the expected state may
+help the small models, as telling a client the exact fault kind does elsewhere~\cite{woo2026same}; we did not test this, to keep the NOTICE identical
+across triggers.
+
+\paragraph{More checks can hurt (exploratory).} On Haiku, adding the contract to read-back lowers
+success on wrong and partial writes (\RHaikuWrongBothSuccess{} and \RHaikuPartialBothSuccess{}, against
+\RHaikuWrongReadbackSuccess{} and \RHaikuPartialReadbackSuccess{} with read-back alone). These cells
+hold \RHaikuWrongReadbackN{} and \RHaikuPartialReadbackN{} episodes, and every pair where only one of
+the two arms succeeded favours read-back alone. An inspection of those pairs suggests a cause. Both arms
+raise the same first flag, on the faulted write. With both checks, the agent's later re-reads of the
+corrupted record fail the contract's type check (wrong writes) or schema check (partial writes) and
+are flagged as well, and in the episodes we read the agent then ends the task without
+repairing the record. Our hypothesis is that the NOTICE, which says the \emph{result} may not match the
+state when in fact the \emph{state} is wrong, leads the agent to distrust the evidence it needs. This
+rests on one seed and a manual inspection, and we never varied the NOTICE, so it is a hypothesis to
+test. On wrong reads, by contrast, adding the contract helps Haiku (\RHaikuReadBothSuccess{} against
+\RHaikuReadReadbackSuccess{}).
+
+\paragraph{Practical implications.} These suggestions rest largely on the exploratory results. Of the
+triggers here, read-back is the only one that reliably sees writes which echoed the right thing, at the
+cost of extra reads and an expected-effect model, so it is worth adding where that effect can be
+written down. Whether it pays depends on the model: it needs to act on true flags and to shrug off
+false ones. On Qwen3-4B the combined check lowered success overall (\RExpQwenFourPThreeDiff{}), almost
+all of it through false alarms on delayed writes, so where writes may become visible late, read-back
+should wait or re-check before it flags. Keep recovery rather than abstaining when a wrong commit is
+not much worse than an abandoned task; abstain where a wrong commit is costly. Flagging every step
+hurt the small models on clean tasks and helped Haiku on silent faults, so its value depends on the
+model and it is no substitute for a targeted trigger. Contracts are
+cheap and catch implausible values, but they cannot see a write that echoed the right thing, and their
+message should say what they found.

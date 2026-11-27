@@ -1,0 +1,21 @@
+\section{Limitations}\label{sec:limitations}
+The service is a mock with six task templates and ten instances of each per test split, so the tasks are
+not independent and the effects are tied to these templates; we cluster by task but do not model the
+template, and a small effect such as P2's is absent in some templates. Only
+Qwen3-8B carries confirmatory tests; Haiku was run with a single seed. The read-back is idealised: it
+knows the true state before each write and the expected effect of every tool (Section~\ref{sec:method}).
+The implausible variant of the wrong-read fault was added during development so that the contract had a
+class of faults it could see; it is reported separately. Five further issues come from our own review of
+the experiment. First, the grader counts every flag that is not on the faulted call as a false flag,
+so the contract's correct flags on later re-reads of a corrupted record are counted as false; the
+NOTICE wording is shared by all triggers and is not tuned to any of them. Second, the faulted call and
+the fault's random draws come from the same seeded generator, so they are correlated within a (task,
+fault, seed) triple; every arm still uses the same slot. Third, Qwen3-4B often fails to produce a
+parseable reply, which depresses all its arms. Fourth, a fault only fires if the agent reaches an
+eligible call, and arms change how often it does: on Qwen3-8B the wrong-read fault fired in a share
+\RExpQwenEightAppliedNeverRead{} of \texttt{never} episodes but \RExpQwenEightAppliedAlwaysRead{} of
+\texttt{always} episodes. Fifth, the step budget may cap repair: \RExpQwenEightStatusBudgetExhausted{}
+Qwen3-8B and \RExpQwenFourStatusBudgetExhausted{} Qwen3-4B episodes end on it, and we did not test
+whether a larger budget lets the small models repair wrong and partial writes. The uncertainty
+threshold was chosen by rescoring development runs, where it would have fired far less often than it
+did on the test split; we report it as run rather than tune it on the test split.

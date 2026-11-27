@@ -1,0 +1,61 @@
+{
+  "model": "qwen3:8b-q4_K_M",
+  "provider": "ollama",
+  "split": "dev",
+  "task_limit": null,
+  "faults": [
+    "clean",
+    "loud",
+    "silent_drop",
+    "silent_wrong",
+    "silent_partial",
+    "silent_read",
+    "delayed"
+  ],
+  "arms": [
+    {
+      "trigger": "never",
+      "response": "recover"
+    },
+    {
+      "trigger": "always",
+      "response": "recover"
+    },
+    {
+      "trigger": "on_error",
+      "response": "recover"
+    },
+    {
+      "trigger": "on_uncertainty",
+      "response": "recover"
+    },
+    {
+      "trigger": "on_contract",
+      "response": "recover"
+    },
+    {
+      "trigger": "on_readback",
+      "response": "recover"
+    },
+    {
+      "trigger": "readback_contract",
+      "response": "recover"
+    },
+    {
+      "trigger": "on_contract",
+      "response": "abstain"
+    },
+    {
+      "trigger": "on_readback",
+      "response": "abstain"
+    }
+  ],
+  "seeds": [
+    0,
+    1
+  ],
+  "threshold": 0.7,
+  "max_steps": 15,
+  "est_usd_per_episode": 0.0,
+  "frozen": false
+}
