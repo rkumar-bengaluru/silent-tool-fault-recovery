@@ -15,12 +15,19 @@ identifiers:
   - type: doi
     value: 10.5281/zenodo.24585902
     description: "Episode logs of the final runs (CC BY 4.0)"
+  - type: doi
+    value: 10.5281/zenodo.24590562
+    description: "Paper preprint (Zenodo)"
 authors:
   - family-names: Kumar
     given-names: Rupak
     affiliation: "AvantaLabs AI"
 preferred-citation:
   type: article
+  doi: 10.5281/zenodo.24590562
+  publisher:
+    name: "Zenodo"
+  url: "https://doi.org/10.5281/zenodo.24590562"
   title: "When Should a Tool Agent Recover? Comparing Triggers for Silent Tool Faults with Recovery Held Fixed"
   authors:
     - family-names: Kumar
