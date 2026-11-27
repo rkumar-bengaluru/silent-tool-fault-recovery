@@ -3,6 +3,13 @@
 Code, data and paper source for **"When Should a Tool Agent Recover? Comparing Triggers for Silent Tool
 Faults with Recovery Held Fixed"** (Rupak Kumar, AvantaLabs AI, 2026).
 
+[![Code DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24586177.svg)](https://doi.org/10.5281/zenodo.24586177)
+[![Logs DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24585902.svg)](https://doi.org/10.5281/zenodo.24585902)
+
+- Code v1.0.0, archived: [10.5281/zenodo.24586177](https://doi.org/10.5281/zenodo.24586177)
+  (all versions: [10.5281/zenodo.24586176](https://doi.org/10.5281/zenodo.24586176))
+- Episode logs of the final runs: [10.5281/zenodo.24585902](https://doi.org/10.5281/zenodo.24585902)
+
 A tool-using agent works on a small in-memory record service. Faults are injected into its tool calls.
 The worst are *silent* faults: a write is dropped, lands on the wrong field, or is applied only in part,
 while the tool still returns the echo a correct write would have returned. The agent and its single
@@ -64,7 +71,8 @@ cd paper && latexmk -pdf main.tex
 `assets` refuses to run if the confirmatory tests block of `results.json` does not match the frozen hash.
 
 **2. `results.json` from the episode logs.** The logs of the three final runs (about 70 MB: every step,
-tool call, flag and grade of every episode) are archived on Zenodo: *DOI to be added*. Unpack them into
+tool call, flag and grade of every episode) are archived on Zenodo at
+[10.5281/zenodo.24585902](https://doi.org/10.5281/zenodo.24585902) (`stfr-episode-logs-v1.0.0.zip`, 2.1 MB). Unzip it into
 `results/runs/`, then:
 
 ```
