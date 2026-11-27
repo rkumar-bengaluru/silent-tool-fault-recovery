@@ -7,7 +7,6 @@ results/cache/
 results/runs/
 results/cost.json
 results/*.lock
-paper/authors.tex
 paper/*.aux
 paper/*.bbl
 paper/*.blg
