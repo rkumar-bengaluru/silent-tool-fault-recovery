@@ -4,6 +4,17 @@ title: "silent-tool-fault-recovery"
 version: 1.0.0
 license: MIT
 repository-code: "https://github.com/rkumar-bengaluru/silent-tool-fault-recovery"
+doi: 10.5281/zenodo.24586176
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.24586176
+    description: "Code, all versions (Zenodo concept DOI)"
+  - type: doi
+    value: 10.5281/zenodo.24586177
+    description: "Code v1.0.0"
+  - type: doi
+    value: 10.5281/zenodo.24585902
+    description: "Episode logs of the final runs (CC BY 4.0)"
 authors:
   - family-names: Kumar
     given-names: Rupak
