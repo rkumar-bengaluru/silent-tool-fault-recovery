@@ -1,5 +1,6 @@
-The task splits in stfr/data/, the aggregated results in results/, and the
-episode logs archived alongside this repository are licensed under the
+The task splits in stfr/data/, the aggregated results in results/, the
+episode logs archived alongside this repository, and the paper source in
+paper/ (text, tables and figure) are licensed under the
 Creative Commons Attribution 4.0 International licence (CC BY 4.0).
 
 Copyright (c) 2026 Rupak Kumar

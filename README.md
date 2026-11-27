@@ -111,7 +111,8 @@ See [`CITATION.cff`](CITATION.cff). The arXiv identifier will be added here once
 
 ## Licence
 
-Code: [MIT](LICENSE). Task splits, `results/` and the episode logs: [CC BY 4.0](LICENSE-DATA).
+Code: [MIT](LICENSE). Task splits, `results/`, the episode logs and the paper source in `paper/`:
+[CC BY 4.0](LICENSE-DATA).
 
 The code and paper were written with AI assistance (Claude Code); see the AI-assistance statement in
 the paper.
