@@ -1,0 +1,56 @@
+\section{Method}\label{sec:method}
+\paragraph{Service and tasks.} The agent operates a small in-memory record service with collections
+of orders, items and accounts. It reads with \texttt{get\_record} and \texttt{list\_records} and
+writes with \texttt{update\_field}, \texttt{transfer}, \texttt{create\_record} and
+\texttt{delete\_record}. Write tools echo their effect: an update returns the record after the write
+and a transfer returns both balances. Tasks come from six templates (for example, cancel an order and
+restock its items, or move money between accounts), each instantiated ten times in each test split and five times in the development split. A task
+succeeds only if the agent declares it done, every goal holds in the final state, and nothing else
+changed. No language model judges success.
+
+\paragraph{Agent.} Every arm runs the same loop and system prompt. At each step the model replies with
+one JSON object, either a tool call with a short thought and a stated confidence (a probability), or a
+declaration that the task is done; a missing confidence counts as full confidence. The tool result, or
+the tool error, comes back as the next user message. A reply that is not a valid action is returned to
+the model as an error; a short run of such replies in a row ends the episode as a \emph{parse
+failure}. The agent has at most \RQwenEightMaxSteps{} steps. Sampling settings are fixed per model and
+given in the released code.
+
+\paragraph{Faults.} At most one fault is injected per episode. For each (task, fault, seed) a slot
+$k$ is drawn and shared by every arm; the fault arms at the $k$-th successful call of its kind and
+fires once, on the first eligible call at or after it. Only the slot index is shared: arms change what the agent does, so the
+trajectory and whether the fault fires at all can differ between arms (Section~\ref{sec:limitations}). The faults are:
+\emph{clean}, which injects nothing;
+\emph{loud}, which returns an error;
+three silent write faults that return the echo a correct write would return, namely \emph{drop},
+which does not apply the write, \emph{wrong}, which writes the value to a different field of the
+record, and \emph{partial}, which applies only the debit of a transfer or only the first half of a
+new record's fields;
+\emph{read}, which corrupts one field of a returned record, with an implausible value (a negative
+number or an invalid order status) in a little under half of the episodes and a plausible one otherwise;
+and \emph{delayed}, which applies the write but hides it from reads for two further calls. Delayed
+exposes false alarms, since there is nothing to repair.
+
+\paragraph{Triggers.} After each tool call a trigger decides whether to flag it. \texttt{never} and
+\texttt{always} are the bounds; \texttt{on\_error} fires on tool errors and \texttt{on\_uncertainty}
+when the agent's stated confidence is below \RQwenEightThreshold{}. \texttt{on\_contract} sees only
+the call and its result and checks the schema, the field types, simple value domains (no negative numbers, a known order
+status) and that the echo matches the request.
+At the faulted call of a silent write fault the echo is correct, so the contract cannot flag it; it can
+flag later reads of a record the fault left with a wrongly typed value or missing fields.
+\texttt{on\_readback} computes the effect a write should have had from the harness's own snapshot of
+the state before the call and a hand-written effect model per tool, re-reads every affected record, and
+fires on any difference. The write faults change the stored state itself, so any read would show them;
+read-back's advantage is that it compares what it reads with the expected effect. Its reads go through
+a path that the wrong-read fault does not corrupt and that does not count towards fault slots, but
+that still sees delayed visibility. This is an idealised read-back: a deployed one would need its own
+expected-effect model. \texttt{readback\_contract} fires if either does.
+
+\paragraph{Responses.} A flag injects one fixed message, whatever the trigger:
+\begin{quote}\small
+NOTICE\@: a check flagged a possible problem with step $k$ (\emph{tool}). Its result may not match the
+real state. Decide how to continue: you may re-read state, re-issue the call, or change your plan.
+\end{quote}
+The agent never sees what the check found. Under \emph{recover} the agent continues with this
+message; under \emph{abstain} the episode ends and counts as a failure. All seven triggers are run with
+recover, and the contract and read-back triggers also with abstain, giving nine arms.

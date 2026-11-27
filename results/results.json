@@ -1,0 +1,3982 @@
+{
+ "runs": [
+  {
+   "run_id": "final-claude-haiku-5-5-20261123T122505323442Z",
+   "config": {
+    "model": "claude-haiku-5-5",
+    "provider": "claude",
+    "split": "testA",
+    "task_limit": null,
+    "faults": [
+     "clean",
+     "loud",
+     "silent_drop",
+     "silent_wrong",
+     "silent_partial",
+     "silent_read",
+     "delayed"
+    ],
+    "arms": [
+     {
+      "trigger": "never",
+      "response": "recover"
+     },
+     {
+      "trigger": "always",
+      "response": "recover"
+     },
+     {
+      "trigger": "on_error",
+      "response": "recover"
+     },
+     {
+      "trigger": "on_uncertainty",
+      "response": "recover"
+     },
+     {
+      "trigger": "on_contract",
+      "response": "recover"
+     },
+     {
+      "trigger": "on_readback",
+      "response": "recover"
+     },
+     {
+      "trigger": "readback_contract",
+      "response": "recover"
+     },
+     {
+      "trigger": "on_contract",
+      "response": "abstain"
+     },
+     {
+      "trigger": "on_readback",
+      "response": "abstain"
+     }
+    ],
+    "seeds": [
+     100
+    ],
+    "threshold": 0.9,
+    "max_steps": 15,
+    "est_usd_per_episode": 0.0002,
+    "frozen": true
+   },
+   "model": "claude-haiku-5-5",
+   "seeds": [
+    100
+   ],
+   "cost_usd": 0.9125826000000005,
+   "complete": true,
+   "mode": "final",
+   "in_tests": true
+  },
+  {
+   "run_id": "final-qwen3_4b-q4_K_M-20261124T011458069993Z",
+   "config": {
+    "model": "qwen3:4b-q4_K_M",
+    "provider": "ollama",
+    "split": "testA",
+    "task_limit": null,
+    "faults": [
+     "clean",
+     "loud",
+     "silent_drop",
+     "silent_wrong",
+     "silent_partial",
+     "silent_read",
+     "delayed"
+    ],
+    "arms": [
+     {
+      "trigger": "never",
+      "response": "recover"
+     },
+     {
+      "trigger": "always",
+      "response": "recover"
+     },
+     {
+      "trigger": "on_error",
+      "response": "recover"
+     },
+     {
+      "trigger": "on_uncertainty",
+      "response": "recover"
+     },
+     {
+      "trigger": "on_contract",
+      "response": "recover"
+     },
+     {
+      "trigger": "on_readback",
+      "response": "recover"
+     },
+     {
+      "trigger": "readback_contract",
+      "response": "recover"
+     },
+     {
+      "trigger": "on_contract",
+      "response": "abstain"
+     },
+     {
+      "trigger": "on_readback",
+      "response": "abstain"
+     }
+    ],
+    "seeds": [
+     100,
+     101
+    ],
+    "threshold": 0.9,
+    "max_steps": 15,
+    "est_usd_per_episode": 0.0,
+    "frozen": true
+   },
+   "model": "qwen3:4b-q4_K_M",
+   "seeds": [
+    100,
+    101
+   ],
+   "cost_usd": 0.0,
+   "complete": true,
+   "mode": "final",
+   "in_tests": true
+  },
+  {
+   "run_id": "final-qwen3_8b-q4_K_M-20261123T150409505835Z",
+   "config": {
+    "model": "qwen3:8b-q4_K_M",
+    "provider": "ollama",
+    "split": "testA",
+    "task_limit": null,
+    "faults": [
+     "clean",
+     "loud",
+     "silent_drop",
+     "silent_wrong",
+     "silent_partial",
+     "silent_read",
+     "delayed"
+    ],
+    "arms": [
+     {
+      "trigger": "never",
+      "response": "recover"
+     },
+     {
+      "trigger": "always",
+      "response": "recover"
+     },
+     {
+      "trigger": "on_error",
+      "response": "recover"
+     },
+     {
+      "trigger": "on_uncertainty",
+      "response": "recover"
+     },
+     {
+      "trigger": "on_contract",
+      "response": "recover"
+     },
+     {
+      "trigger": "on_readback",
+      "response": "recover"
+     },
+     {
+      "trigger": "readback_contract",
+      "response": "recover"
+     },
+     {
+      "trigger": "on_contract",
+      "response": "abstain"
+     },
+     {
+      "trigger": "on_readback",
+      "response": "abstain"
+     }
+    ],
+    "seeds": [
+     100,
+     101
+    ],
+    "threshold": 0.9,
+    "max_steps": 15,
+    "est_usd_per_episode": 0.0,
+    "frozen": true
+   },
+   "model": "qwen3:8b-q4_K_M",
+   "seeds": [
+    100,
+    101
+   ],
+   "cost_usd": 0.0,
+   "complete": true,
+   "mode": "final",
+   "in_tests": true
+  }
+ ],
+ "cells": [
+  {
+   "model": "claude-haiku-5-5",
+   "fault": "clean",
+   "arm": "always/recover",
+   "in_tests": true,
+   "n": 60,
+   "success": 0.9333333333333333,
+   "wrong_commit": 0.05,
+   "abstain": 0.0,
+   "false_flags_per_episode": 7.05,
+   "extra_calls": 3.3833333333333333,
+   "readback_calls": 0.0,
+   "tokens": 13442.85,
+   "duplicates": 0
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "fault": "clean",
+   "arm": "never/recover",
+   "in_tests": true,
+   "n": 60,
+   "success": 1.0,
+   "wrong_commit": 0.0,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": -0.36666666666666664,
+   "readback_calls": 0.0,
+   "tokens": 3647.8333333333335,
+   "duplicates": 0
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "fault": "clean",
+   "arm": "on_contract/abstain",
+   "in_tests": true,
+   "n": 60,
+   "success": 1.0,
+   "wrong_commit": 0.0,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": -0.36666666666666664,
+   "readback_calls": 0.0,
+   "tokens": 3647.8333333333335,
+   "duplicates": 0
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "fault": "clean",
+   "arm": "on_contract/recover",
+   "in_tests": true,
+   "n": 60,
+   "success": 1.0,
+   "wrong_commit": 0.0,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": -0.36666666666666664,
+   "readback_calls": 0.0,
+   "tokens": 3647.8333333333335,
+   "duplicates": 0
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "fault": "clean",
+   "arm": "on_error/recover",
+   "in_tests": true,
+   "n": 60,
+   "success": 1.0,
+   "wrong_commit": 0.0,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": -0.36666666666666664,
+   "readback_calls": 0.0,
+   "tokens": 3647.8333333333335,
+   "duplicates": 0
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "fault": "clean",
+   "arm": "on_readback/abstain",
+   "in_tests": true,
+   "n": 60,
+   "success": 1.0,
+   "wrong_commit": 0.0,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": -0.36666666666666664,
+   "readback_calls": 2.1666666666666665,
+   "tokens": 3647.8333333333335,
+   "duplicates": 0
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "fault": "clean",
+   "arm": "on_readback/recover",
+   "in_tests": true,
+   "n": 60,
+   "success": 1.0,
+   "wrong_commit": 0.0,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": -0.36666666666666664,
+   "readback_calls": 2.1666666666666665,
+   "tokens": 3647.8333333333335,
+   "duplicates": 0
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "fault": "clean",
+   "arm": "on_uncertainty/recover",
+   "in_tests": true,
+   "n": 60,
+   "success": 1.0,
+   "wrong_commit": 0.0,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.36666666666666664,
+   "extra_calls": -0.2,
+   "readback_calls": 0.0,
+   "tokens": 4176.683333333333,
+   "duplicates": 0
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "fault": "clean",
+   "arm": "readback_contract/recover",
+   "in_tests": true,
+   "n": 60,
+   "success": 1.0,
+   "wrong_commit": 0.0,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": -0.36666666666666664,
+   "readback_calls": 2.1666666666666665,
+   "tokens": 3647.8333333333335,
+   "duplicates": 0
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "fault": "delayed",
+   "arm": "always/recover",
+   "in_tests": true,
+   "n": 60,
+   "success": 0.8333333333333334,
+   "wrong_commit": 0.11666666666666667,
+   "abstain": 0.0,
+   "false_flags_per_episode": 8.633333333333333,
+   "extra_calls": 4.966666666666667,
+   "readback_calls": 0.0,
+   "tokens": 18780.683333333334,
+   "duplicates": 1
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "fault": "delayed",
+   "arm": "never/recover",
+   "in_tests": true,
+   "n": 60,
+   "success": 1.0,
+   "wrong_commit": 0.0,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": -0.36666666666666664,
+   "readback_calls": 0.0,
+   "tokens": 3647.8333333333335,
+   "duplicates": 0
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "fault": "delayed",
+   "arm": "on_contract/abstain",
+   "in_tests": true,
+   "n": 60,
+   "success": 1.0,
+   "wrong_commit": 0.0,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": -0.36666666666666664,
+   "readback_calls": 0.0,
+   "tokens": 3647.8333333333335,
+   "duplicates": 0
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "fault": "delayed",
+   "arm": "on_contract/recover",
+   "in_tests": true,
+   "n": 60,
+   "success": 1.0,
+   "wrong_commit": 0.0,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": -0.36666666666666664,
+   "readback_calls": 0.0,
+   "tokens": 3647.8333333333335,
+   "duplicates": 0
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "fault": "delayed",
+   "arm": "on_error/recover",
+   "in_tests": true,
+   "n": 60,
+   "success": 1.0,
+   "wrong_commit": 0.0,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": -0.36666666666666664,
+   "readback_calls": 0.0,
+   "tokens": 3647.8333333333335,
+   "duplicates": 0
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "fault": "delayed",
+   "arm": "on_readback/abstain",
+   "in_tests": true,
+   "n": 60,
+   "success": 0.0,
+   "wrong_commit": 0.0,
+   "abstain": 1.0,
+   "false_flags_per_episode": 1.0,
+   "extra_calls": -0.9166666666666666,
+   "readback_calls": 1.75,
+   "tokens": 2067.3,
+   "duplicates": 0
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "fault": "delayed",
+   "arm": "on_readback/recover",
+   "in_tests": true,
+   "n": 60,
+   "success": 0.8666666666666667,
+   "wrong_commit": 0.13333333333333333,
+   "abstain": 0.0,
+   "false_flags_per_episode": 1.0,
+   "extra_calls": 2.783333333333333,
+   "readback_calls": 3.033333333333333,
+   "tokens": 8931.433333333332,
+   "duplicates": 4
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "fault": "delayed",
+   "arm": "on_uncertainty/recover",
+   "in_tests": true,
+   "n": 60,
+   "success": 1.0,
+   "wrong_commit": 0.0,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.43333333333333335,
+   "extra_calls": -0.13333333333333333,
+   "readback_calls": 0.0,
+   "tokens": 4401.666666666667,
+   "duplicates": 0
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "fault": "delayed",
+   "arm": "readback_contract/recover",
+   "in_tests": true,
+   "n": 60,
+   "success": 0.8666666666666667,
+   "wrong_commit": 0.13333333333333333,
+   "abstain": 0.0,
+   "false_flags_per_episode": 1.0,
+   "extra_calls": 2.783333333333333,
+   "readback_calls": 3.033333333333333,
+   "tokens": 8931.433333333332,
+   "duplicates": 4
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "fault": "loud",
+   "arm": "always/recover",
+   "in_tests": true,
+   "n": 60,
+   "success": 0.8333333333333334,
+   "wrong_commit": 0.15,
+   "abstain": 0.0,
+   "false_flags_per_episode": 6.95,
+   "extra_calls": 4.233333333333333,
+   "readback_calls": 0.0,
+   "tokens": 16143.883333333333,
+   "duplicates": 0
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "fault": "loud",
+   "arm": "never/recover",
+   "in_tests": true,
+   "n": 60,
+   "success": 1.0,
+   "wrong_commit": 0.0,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": 0.7833333333333333,
+   "readback_calls": 0.0,
+   "tokens": 5144.033333333334,
+   "duplicates": 0
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "fault": "loud",
+   "arm": "on_contract/abstain",
+   "in_tests": true,
+   "n": 60,
+   "success": 1.0,
+   "wrong_commit": 0.0,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": 0.7833333333333333,
+   "readback_calls": 0.0,
+   "tokens": 5144.033333333334,
+   "duplicates": 0
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "fault": "loud",
+   "arm": "on_contract/recover",
+   "in_tests": true,
+   "n": 60,
+   "success": 1.0,
+   "wrong_commit": 0.0,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": 0.7833333333333333,
+   "readback_calls": 0.0,
+   "tokens": 5144.033333333334,
+   "duplicates": 0
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "fault": "loud",
+   "arm": "on_error/recover",
+   "in_tests": true,
+   "n": 60,
+   "success": 0.9166666666666666,
+   "wrong_commit": 0.08333333333333333,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": 1.6333333333333333,
+   "readback_calls": 0.0,
+   "tokens": 6924.5,
+   "duplicates": 0
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "fault": "loud",
+   "arm": "on_readback/abstain",
+   "in_tests": true,
+   "n": 60,
+   "success": 1.0,
+   "wrong_commit": 0.0,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": 0.7833333333333333,
+   "readback_calls": 2.1666666666666665,
+   "tokens": 5144.033333333334,
+   "duplicates": 0
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "fault": "loud",
+   "arm": "on_readback/recover",
+   "in_tests": true,
+   "n": 60,
+   "success": 1.0,
+   "wrong_commit": 0.0,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": 0.7833333333333333,
+   "readback_calls": 2.1666666666666665,
+   "tokens": 5144.033333333334,
+   "duplicates": 0
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "fault": "loud",
+   "arm": "on_uncertainty/recover",
+   "in_tests": true,
+   "n": 60,
+   "success": 0.9833333333333333,
+   "wrong_commit": 0.0,
+   "abstain": 0.0,
+   "false_flags_per_episode": 2.4,
+   "extra_calls": 2.45,
+   "readback_calls": 0.0,
+   "tokens": 9256.833333333334,
+   "duplicates": 0
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "fault": "loud",
+   "arm": "readback_contract/recover",
+   "in_tests": true,
+   "n": 60,
+   "success": 1.0,
+   "wrong_commit": 0.0,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": 0.7833333333333333,
+   "readback_calls": 2.1666666666666665,
+   "tokens": 5144.033333333334,
+   "duplicates": 0
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "fault": "silent_drop",
+   "arm": "always/recover",
+   "in_tests": true,
+   "n": 60,
+   "success": 0.7,
+   "wrong_commit": 0.2833333333333333,
+   "abstain": 0.0,
+   "false_flags_per_episode": 7.533333333333333,
+   "extra_calls": 4.816666666666666,
+   "readback_calls": 0.0,
+   "tokens": 18324.366666666665,
+   "duplicates": 0
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "fault": "silent_drop",
+   "arm": "never/recover",
+   "in_tests": true,
+   "n": 60,
+   "success": 0.0,
+   "wrong_commit": 1.0,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": -0.36666666666666664,
+   "readback_calls": 0.0,
+   "tokens": 3647.8333333333335,
+   "duplicates": 0
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "fault": "silent_drop",
+   "arm": "on_contract/abstain",
+   "in_tests": true,
+   "n": 60,
+   "success": 0.0,
+   "wrong_commit": 1.0,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": -0.36666666666666664,
+   "readback_calls": 0.0,
+   "tokens": 3647.8333333333335,
+   "duplicates": 0
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "fault": "silent_drop",
+   "arm": "on_contract/recover",
+   "in_tests": true,
+   "n": 60,
+   "success": 0.0,
+   "wrong_commit": 1.0,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": -0.36666666666666664,
+   "readback_calls": 0.0,
+   "tokens": 3647.8333333333335,
+   "duplicates": 0
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "fault": "silent_drop",
+   "arm": "on_error/recover",
+   "in_tests": true,
+   "n": 60,
+   "success": 0.0,
+   "wrong_commit": 1.0,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": -0.36666666666666664,
+   "readback_calls": 0.0,
+   "tokens": 3647.8333333333335,
+   "duplicates": 0
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "fault": "silent_drop",
+   "arm": "on_readback/abstain",
+   "in_tests": true,
+   "n": 60,
+   "success": 0.0,
+   "wrong_commit": 0.0,
+   "abstain": 1.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": -1.0,
+   "readback_calls": 1.6666666666666667,
+   "tokens": 2006.5333333333333,
+   "duplicates": 0
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "fault": "silent_drop",
+   "arm": "on_readback/recover",
+   "in_tests": true,
+   "n": 60,
+   "success": 0.9333333333333333,
+   "wrong_commit": 0.06666666666666667,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": 2.816666666666667,
+   "readback_calls": 3.066666666666667,
+   "tokens": 9070.783333333333,
+   "duplicates": 0
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "fault": "silent_drop",
+   "arm": "on_uncertainty/recover",
+   "in_tests": true,
+   "n": 60,
+   "success": 0.05,
+   "wrong_commit": 0.95,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.43333333333333335,
+   "extra_calls": -0.08333333333333333,
+   "readback_calls": 0.0,
+   "tokens": 4580.083333333333,
+   "duplicates": 0
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "fault": "silent_drop",
+   "arm": "readback_contract/recover",
+   "in_tests": true,
+   "n": 60,
+   "success": 0.9333333333333333,
+   "wrong_commit": 0.06666666666666667,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": 2.816666666666667,
+   "readback_calls": 3.066666666666667,
+   "tokens": 9070.783333333333,
+   "duplicates": 0
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "fault": "silent_partial",
+   "arm": "always/recover",
+   "in_tests": true,
+   "n": 20,
+   "success": 0.15,
+   "wrong_commit": 0.7,
+   "abstain": 0.0,
+   "false_flags_per_episode": 5.3,
+   "extra_calls": 3.25,
+   "readback_calls": 0.0,
+   "tokens": 13726.85,
+   "duplicates": 0
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "fault": "silent_partial",
+   "arm": "never/recover",
+   "in_tests": true,
+   "n": 20,
+   "success": 0.0,
+   "wrong_commit": 1.0,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": -0.5,
+   "readback_calls": 0.0,
+   "tokens": 2716.55,
+   "duplicates": 0
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "fault": "silent_partial",
+   "arm": "on_contract/abstain",
+   "in_tests": true,
+   "n": 20,
+   "success": 0.0,
+   "wrong_commit": 1.0,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": -0.5,
+   "readback_calls": 0.0,
+   "tokens": 2716.55,
+   "duplicates": 0
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "fault": "silent_partial",
+   "arm": "on_contract/recover",
+   "in_tests": true,
+   "n": 20,
+   "success": 0.0,
+   "wrong_commit": 1.0,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": -0.5,
+   "readback_calls": 0.0,
+   "tokens": 2716.55,
+   "duplicates": 0
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "fault": "silent_partial",
+   "arm": "on_error/recover",
+   "in_tests": true,
+   "n": 20,
+   "success": 0.0,
+   "wrong_commit": 1.0,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": -0.5,
+   "readback_calls": 0.0,
+   "tokens": 2716.55,
+   "duplicates": 0
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "fault": "silent_partial",
+   "arm": "on_readback/abstain",
+   "in_tests": true,
+   "n": 20,
+   "success": 0.0,
+   "wrong_commit": 0.0,
+   "abstain": 1.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": -1.5,
+   "readback_calls": 1.5,
+   "tokens": 952.6,
+   "duplicates": 0
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "fault": "silent_partial",
+   "arm": "on_readback/recover",
+   "in_tests": true,
+   "n": 20,
+   "success": 0.45,
+   "wrong_commit": 0.55,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": 2.4,
+   "readback_calls": 3.0,
+   "tokens": 8059.15,
+   "duplicates": 1
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "fault": "silent_partial",
+   "arm": "on_uncertainty/recover",
+   "in_tests": true,
+   "n": 20,
+   "success": 0.0,
+   "wrong_commit": 1.0,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": -0.5,
+   "readback_calls": 0.0,
+   "tokens": 2716.55,
+   "duplicates": 0
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "fault": "silent_partial",
+   "arm": "readback_contract/recover",
+   "in_tests": true,
+   "n": 20,
+   "success": 0.05,
+   "wrong_commit": 0.9,
+   "abstain": 0.0,
+   "false_flags_per_episode": 1.45,
+   "extra_calls": 1.7,
+   "readback_calls": 1.7,
+   "tokens": 7420.7,
+   "duplicates": 0
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "fault": "silent_read",
+   "arm": "always/recover",
+   "in_tests": true,
+   "n": 60,
+   "success": 0.7333333333333333,
+   "wrong_commit": 0.21666666666666667,
+   "abstain": 0.0,
+   "false_flags_per_episode": 6.433333333333334,
+   "extra_calls": 3.7666666666666666,
+   "readback_calls": 0.0,
+   "tokens": 15836.683333333332,
+   "duplicates": 0
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "fault": "silent_read",
+   "arm": "never/recover",
+   "in_tests": true,
+   "n": 60,
+   "success": 0.6,
+   "wrong_commit": 0.4,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": -0.3333333333333333,
+   "readback_calls": 0.0,
+   "tokens": 3928.85,
+   "duplicates": 0
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "fault": "silent_read",
+   "arm": "on_contract/abstain",
+   "in_tests": true,
+   "n": 60,
+   "success": 0.5166666666666667,
+   "wrong_commit": 0.21666666666666667,
+   "abstain": 0.26666666666666666,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": -0.7666666666666667,
+   "readback_calls": 0.0,
+   "tokens": 3143.0666666666666,
+   "duplicates": 0
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "fault": "silent_read",
+   "arm": "on_contract/recover",
+   "in_tests": true,
+   "n": 60,
+   "success": 0.7833333333333333,
+   "wrong_commit": 0.21666666666666667,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": 0.03333333333333333,
+   "readback_calls": 0.0,
+   "tokens": 4484.316666666667,
+   "duplicates": 0
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "fault": "silent_read",
+   "arm": "on_error/recover",
+   "in_tests": true,
+   "n": 60,
+   "success": 0.6333333333333333,
+   "wrong_commit": 0.36666666666666664,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.03333333333333333,
+   "extra_calls": -0.3,
+   "readback_calls": 0.0,
+   "tokens": 3998.2833333333333,
+   "duplicates": 0
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "fault": "silent_read",
+   "arm": "on_readback/abstain",
+   "in_tests": true,
+   "n": 60,
+   "success": 0.6,
+   "wrong_commit": 0.4,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": -0.3333333333333333,
+   "readback_calls": 2.0833333333333335,
+   "tokens": 3928.85,
+   "duplicates": 0
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "fault": "silent_read",
+   "arm": "on_readback/recover",
+   "in_tests": true,
+   "n": 60,
+   "success": 0.6,
+   "wrong_commit": 0.4,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": -0.3333333333333333,
+   "readback_calls": 2.0833333333333335,
+   "tokens": 3928.85,
+   "duplicates": 0
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "fault": "silent_read",
+   "arm": "on_uncertainty/recover",
+   "in_tests": true,
+   "n": 60,
+   "success": 0.5833333333333334,
+   "wrong_commit": 0.4,
+   "abstain": 0.0,
+   "false_flags_per_episode": 1.1833333333333333,
+   "extra_calls": 0.5,
+   "readback_calls": 0.0,
+   "tokens": 6311.566666666667,
+   "duplicates": 0
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "fault": "silent_read",
+   "arm": "readback_contract/recover",
+   "in_tests": true,
+   "n": 60,
+   "success": 0.7833333333333333,
+   "wrong_commit": 0.21666666666666667,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": 0.03333333333333333,
+   "readback_calls": 2.183333333333333,
+   "tokens": 4484.316666666667,
+   "duplicates": 0
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "fault": "silent_wrong",
+   "arm": "always/recover",
+   "in_tests": true,
+   "n": 60,
+   "success": 0.13333333333333333,
+   "wrong_commit": 0.85,
+   "abstain": 0.0,
+   "false_flags_per_episode": 7.25,
+   "extra_calls": 4.533333333333333,
+   "readback_calls": 0.0,
+   "tokens": 17810.283333333333,
+   "duplicates": 0
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "fault": "silent_wrong",
+   "arm": "never/recover",
+   "in_tests": true,
+   "n": 60,
+   "success": 0.0,
+   "wrong_commit": 1.0,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": -0.36666666666666664,
+   "readback_calls": 0.0,
+   "tokens": 3647.8333333333335,
+   "duplicates": 0
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "fault": "silent_wrong",
+   "arm": "on_contract/abstain",
+   "in_tests": true,
+   "n": 60,
+   "success": 0.0,
+   "wrong_commit": 1.0,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": -0.36666666666666664,
+   "readback_calls": 0.0,
+   "tokens": 3647.8333333333335,
+   "duplicates": 0
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "fault": "silent_wrong",
+   "arm": "on_contract/recover",
+   "in_tests": true,
+   "n": 60,
+   "success": 0.0,
+   "wrong_commit": 1.0,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": -0.36666666666666664,
+   "readback_calls": 0.0,
+   "tokens": 3647.8333333333335,
+   "duplicates": 0
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "fault": "silent_wrong",
+   "arm": "on_error/recover",
+   "in_tests": true,
+   "n": 60,
+   "success": 0.0,
+   "wrong_commit": 1.0,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": -0.36666666666666664,
+   "readback_calls": 0.0,
+   "tokens": 3647.8333333333335,
+   "duplicates": 0
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "fault": "silent_wrong",
+   "arm": "on_readback/abstain",
+   "in_tests": true,
+   "n": 60,
+   "success": 0.0,
+   "wrong_commit": 0.0,
+   "abstain": 1.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": -0.9333333333333333,
+   "readback_calls": 1.75,
+   "tokens": 2047.0833333333333,
+   "duplicates": 0
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "fault": "silent_wrong",
+   "arm": "on_readback/recover",
+   "in_tests": true,
+   "n": 60,
+   "success": 0.85,
+   "wrong_commit": 0.15,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": 3.3833333333333333,
+   "readback_calls": 4.0,
+   "tokens": 10310.883333333333,
+   "duplicates": 0
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "fault": "silent_wrong",
+   "arm": "on_uncertainty/recover",
+   "in_tests": true,
+   "n": 60,
+   "success": 0.016666666666666666,
+   "wrong_commit": 0.9833333333333333,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.38333333333333336,
+   "extra_calls": -0.13333333333333333,
+   "readback_calls": 0.0,
+   "tokens": 4571.216666666666,
+   "duplicates": 0
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "fault": "silent_wrong",
+   "arm": "readback_contract/recover",
+   "in_tests": true,
+   "n": 60,
+   "success": 0.5666666666666667,
+   "wrong_commit": 0.4,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.8166666666666667,
+   "extra_calls": 2.85,
+   "readback_calls": 3.3,
+   "tokens": 9946.8,
+   "duplicates": 0
+  },
+  {
+   "model": "qwen3:4b-q4_K_M",
+   "fault": "clean",
+   "arm": "always/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.225,
+   "wrong_commit": 0.041666666666666664,
+   "abstain": 0.0,
+   "false_flags_per_episode": 4.533333333333333,
+   "extra_calls": 0.8666666666666667,
+   "readback_calls": 0.0,
+   "tokens": 8234.983333333334,
+   "duplicates": 5
+  },
+  {
+   "model": "qwen3:4b-q4_K_M",
+   "fault": "clean",
+   "arm": "never/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.7916666666666666,
+   "wrong_commit": 0.041666666666666664,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": 0.35833333333333334,
+   "readback_calls": 0.0,
+   "tokens": 4562.333333333333,
+   "duplicates": 6
+  },
+  {
+   "model": "qwen3:4b-q4_K_M",
+   "fault": "clean",
+   "arm": "on_contract/abstain",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.7916666666666666,
+   "wrong_commit": 0.041666666666666664,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": 0.35833333333333334,
+   "readback_calls": 0.0,
+   "tokens": 4562.333333333333,
+   "duplicates": 6
+  },
+  {
+   "model": "qwen3:4b-q4_K_M",
+   "fault": "clean",
+   "arm": "on_contract/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.7916666666666666,
+   "wrong_commit": 0.041666666666666664,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": 0.35833333333333334,
+   "readback_calls": 0.0,
+   "tokens": 4562.333333333333,
+   "duplicates": 6
+  },
+  {
+   "model": "qwen3:4b-q4_K_M",
+   "fault": "clean",
+   "arm": "on_error/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.7583333333333333,
+   "wrong_commit": 0.05,
+   "abstain": 0.0,
+   "false_flags_per_episode": 1.075,
+   "extra_calls": 0.6666666666666666,
+   "readback_calls": 0.0,
+   "tokens": 5516.208333333333,
+   "duplicates": 5
+  },
+  {
+   "model": "qwen3:4b-q4_K_M",
+   "fault": "clean",
+   "arm": "on_readback/abstain",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.7916666666666666,
+   "wrong_commit": 0.041666666666666664,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": 0.35833333333333334,
+   "readback_calls": 2.125,
+   "tokens": 4562.333333333333,
+   "duplicates": 6
+  },
+  {
+   "model": "qwen3:4b-q4_K_M",
+   "fault": "clean",
+   "arm": "on_readback/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.7916666666666666,
+   "wrong_commit": 0.041666666666666664,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": 0.35833333333333334,
+   "readback_calls": 2.125,
+   "tokens": 4562.333333333333,
+   "duplicates": 6
+  },
+  {
+   "model": "qwen3:4b-q4_K_M",
+   "fault": "clean",
+   "arm": "on_uncertainty/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.75,
+   "wrong_commit": 0.06666666666666667,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.8333333333333334,
+   "extra_calls": 0.5,
+   "readback_calls": 0.0,
+   "tokens": 5111.4,
+   "duplicates": 9
+  },
+  {
+   "model": "qwen3:4b-q4_K_M",
+   "fault": "clean",
+   "arm": "readback_contract/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.7916666666666666,
+   "wrong_commit": 0.041666666666666664,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": 0.35833333333333334,
+   "readback_calls": 2.125,
+   "tokens": 4562.333333333333,
+   "duplicates": 6
+  },
+  {
+   "model": "qwen3:4b-q4_K_M",
+   "fault": "delayed",
+   "arm": "always/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.225,
+   "wrong_commit": 0.03333333333333333,
+   "abstain": 0.0,
+   "false_flags_per_episode": 4.6,
+   "extra_calls": 0.9333333333333333,
+   "readback_calls": 0.0,
+   "tokens": 8439.175,
+   "duplicates": 6
+  },
+  {
+   "model": "qwen3:4b-q4_K_M",
+   "fault": "delayed",
+   "arm": "never/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.7916666666666666,
+   "wrong_commit": 0.041666666666666664,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": 0.35833333333333334,
+   "readback_calls": 0.0,
+   "tokens": 4562.333333333333,
+   "duplicates": 6
+  },
+  {
+   "model": "qwen3:4b-q4_K_M",
+   "fault": "delayed",
+   "arm": "on_contract/abstain",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.7916666666666666,
+   "wrong_commit": 0.041666666666666664,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": 0.35833333333333334,
+   "readback_calls": 0.0,
+   "tokens": 4562.333333333333,
+   "duplicates": 6
+  },
+  {
+   "model": "qwen3:4b-q4_K_M",
+   "fault": "delayed",
+   "arm": "on_contract/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.7916666666666666,
+   "wrong_commit": 0.041666666666666664,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": 0.35833333333333334,
+   "readback_calls": 0.0,
+   "tokens": 4562.333333333333,
+   "duplicates": 6
+  },
+  {
+   "model": "qwen3:4b-q4_K_M",
+   "fault": "delayed",
+   "arm": "on_error/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.7583333333333333,
+   "wrong_commit": 0.05,
+   "abstain": 0.0,
+   "false_flags_per_episode": 1.075,
+   "extra_calls": 0.6666666666666666,
+   "readback_calls": 0.0,
+   "tokens": 5516.208333333333,
+   "duplicates": 5
+  },
+  {
+   "model": "qwen3:4b-q4_K_M",
+   "fault": "delayed",
+   "arm": "on_readback/abstain",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.0,
+   "wrong_commit": 0.0,
+   "abstain": 0.95,
+   "false_flags_per_episode": 0.95,
+   "extra_calls": -0.4166666666666667,
+   "readback_calls": 1.6416666666666666,
+   "tokens": 2582.508333333333,
+   "duplicates": 4
+  },
+  {
+   "model": "qwen3:4b-q4_K_M",
+   "fault": "delayed",
+   "arm": "on_readback/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.30833333333333335,
+   "wrong_commit": 0.058333333333333334,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.9916666666666667,
+   "extra_calls": 0.9833333333333333,
+   "readback_calls": 2.2583333333333333,
+   "tokens": 7096.533333333334,
+   "duplicates": 6
+  },
+  {
+   "model": "qwen3:4b-q4_K_M",
+   "fault": "delayed",
+   "arm": "on_uncertainty/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.75,
+   "wrong_commit": 0.06666666666666667,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.775,
+   "extra_calls": 0.44166666666666665,
+   "readback_calls": 0.0,
+   "tokens": 4987.183333333333,
+   "duplicates": 9
+  },
+  {
+   "model": "qwen3:4b-q4_K_M",
+   "fault": "delayed",
+   "arm": "readback_contract/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.30833333333333335,
+   "wrong_commit": 0.058333333333333334,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.9916666666666667,
+   "extra_calls": 0.9833333333333333,
+   "readback_calls": 2.2583333333333333,
+   "tokens": 7096.533333333334,
+   "duplicates": 6
+  },
+  {
+   "model": "qwen3:4b-q4_K_M",
+   "fault": "loud",
+   "arm": "always/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.225,
+   "wrong_commit": 0.03333333333333333,
+   "abstain": 0.0,
+   "false_flags_per_episode": 4.783333333333333,
+   "extra_calls": 2.091666666666667,
+   "readback_calls": 0.0,
+   "tokens": 10263.433333333332,
+   "duplicates": 15
+  },
+  {
+   "model": "qwen3:4b-q4_K_M",
+   "fault": "loud",
+   "arm": "never/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.425,
+   "wrong_commit": 0.041666666666666664,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": 1.4916666666666667,
+   "readback_calls": 0.0,
+   "tokens": 6974.05,
+   "duplicates": 5
+  },
+  {
+   "model": "qwen3:4b-q4_K_M",
+   "fault": "loud",
+   "arm": "on_contract/abstain",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.425,
+   "wrong_commit": 0.041666666666666664,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": 1.4916666666666667,
+   "readback_calls": 0.0,
+   "tokens": 6974.05,
+   "duplicates": 5
+  },
+  {
+   "model": "qwen3:4b-q4_K_M",
+   "fault": "loud",
+   "arm": "on_contract/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.425,
+   "wrong_commit": 0.041666666666666664,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": 1.4916666666666667,
+   "readback_calls": 0.0,
+   "tokens": 6974.05,
+   "duplicates": 5
+  },
+  {
+   "model": "qwen3:4b-q4_K_M",
+   "fault": "loud",
+   "arm": "on_error/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.5166666666666667,
+   "wrong_commit": 0.041666666666666664,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.95,
+   "extra_calls": 1.6916666666666667,
+   "readback_calls": 0.0,
+   "tokens": 7500.1,
+   "duplicates": 7
+  },
+  {
+   "model": "qwen3:4b-q4_K_M",
+   "fault": "loud",
+   "arm": "on_readback/abstain",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.425,
+   "wrong_commit": 0.041666666666666664,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": 1.4916666666666667,
+   "readback_calls": 2.075,
+   "tokens": 6974.05,
+   "duplicates": 5
+  },
+  {
+   "model": "qwen3:4b-q4_K_M",
+   "fault": "loud",
+   "arm": "on_readback/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.425,
+   "wrong_commit": 0.041666666666666664,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": 1.4916666666666667,
+   "readback_calls": 2.075,
+   "tokens": 6974.05,
+   "duplicates": 5
+  },
+  {
+   "model": "qwen3:4b-q4_K_M",
+   "fault": "loud",
+   "arm": "on_uncertainty/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.25,
+   "wrong_commit": 0.03333333333333333,
+   "abstain": 0.0,
+   "false_flags_per_episode": 1.1666666666666667,
+   "extra_calls": 1.4666666666666666,
+   "readback_calls": 0.0,
+   "tokens": 7582.375,
+   "duplicates": 8
+  },
+  {
+   "model": "qwen3:4b-q4_K_M",
+   "fault": "loud",
+   "arm": "readback_contract/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.425,
+   "wrong_commit": 0.041666666666666664,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": 1.4916666666666667,
+   "readback_calls": 2.075,
+   "tokens": 6974.05,
+   "duplicates": 5
+  },
+  {
+   "model": "qwen3:4b-q4_K_M",
+   "fault": "silent_drop",
+   "arm": "always/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.0,
+   "wrong_commit": 0.25833333333333336,
+   "abstain": 0.0,
+   "false_flags_per_episode": 3.6416666666666666,
+   "extra_calls": 0.9583333333333334,
+   "readback_calls": 0.0,
+   "tokens": 8495.125,
+   "duplicates": 5
+  },
+  {
+   "model": "qwen3:4b-q4_K_M",
+   "fault": "silent_drop",
+   "arm": "never/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.0,
+   "wrong_commit": 0.825,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": 0.43333333333333335,
+   "readback_calls": 0.0,
+   "tokens": 4697.541666666667,
+   "duplicates": 4
+  },
+  {
+   "model": "qwen3:4b-q4_K_M",
+   "fault": "silent_drop",
+   "arm": "on_contract/abstain",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.0,
+   "wrong_commit": 0.825,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": 0.43333333333333335,
+   "readback_calls": 0.0,
+   "tokens": 4697.541666666667,
+   "duplicates": 4
+  },
+  {
+   "model": "qwen3:4b-q4_K_M",
+   "fault": "silent_drop",
+   "arm": "on_contract/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.0,
+   "wrong_commit": 0.825,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": 0.43333333333333335,
+   "readback_calls": 0.0,
+   "tokens": 4697.541666666667,
+   "duplicates": 4
+  },
+  {
+   "model": "qwen3:4b-q4_K_M",
+   "fault": "silent_drop",
+   "arm": "on_error/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.0,
+   "wrong_commit": 0.8083333333333333,
+   "abstain": 0.0,
+   "false_flags_per_episode": 1.125,
+   "extra_calls": 0.75,
+   "readback_calls": 0.0,
+   "tokens": 5661.466666666666,
+   "duplicates": 5
+  },
+  {
+   "model": "qwen3:4b-q4_K_M",
+   "fault": "silent_drop",
+   "arm": "on_readback/abstain",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.0,
+   "wrong_commit": 0.0,
+   "abstain": 0.95,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": -0.4583333333333333,
+   "readback_calls": 1.6416666666666666,
+   "tokens": 2565.425,
+   "duplicates": 1
+  },
+  {
+   "model": "qwen3:4b-q4_K_M",
+   "fault": "silent_drop",
+   "arm": "on_readback/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.008333333333333333,
+   "wrong_commit": 0.39166666666666666,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": 1.0583333333333333,
+   "readback_calls": 2.2666666666666666,
+   "tokens": 7033.35,
+   "duplicates": 6
+  },
+  {
+   "model": "qwen3:4b-q4_K_M",
+   "fault": "silent_drop",
+   "arm": "on_uncertainty/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.008333333333333333,
+   "wrong_commit": 0.8083333333333333,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.7666666666666667,
+   "extra_calls": 0.6416666666666667,
+   "readback_calls": 0.0,
+   "tokens": 5369.108333333334,
+   "duplicates": 7
+  },
+  {
+   "model": "qwen3:4b-q4_K_M",
+   "fault": "silent_drop",
+   "arm": "readback_contract/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.008333333333333333,
+   "wrong_commit": 0.39166666666666666,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": 1.0583333333333333,
+   "readback_calls": 2.2666666666666666,
+   "tokens": 7033.35,
+   "duplicates": 6
+  },
+  {
+   "model": "qwen3:4b-q4_K_M",
+   "fault": "silent_partial",
+   "arm": "always/recover",
+   "in_tests": true,
+   "n": 40,
+   "success": 0.0,
+   "wrong_commit": 0.05,
+   "abstain": 0.0,
+   "false_flags_per_episode": 2.1,
+   "extra_calls": 0.1,
+   "readback_calls": 0.0,
+   "tokens": 6443.25,
+   "duplicates": 0
+  },
+  {
+   "model": "qwen3:4b-q4_K_M",
+   "fault": "silent_partial",
+   "arm": "never/recover",
+   "in_tests": true,
+   "n": 40,
+   "success": 0.0,
+   "wrong_commit": 1.0,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": -0.5,
+   "readback_calls": 0.0,
+   "tokens": 2150.075,
+   "duplicates": 0
+  },
+  {
+   "model": "qwen3:4b-q4_K_M",
+   "fault": "silent_partial",
+   "arm": "on_contract/abstain",
+   "in_tests": true,
+   "n": 40,
+   "success": 0.0,
+   "wrong_commit": 1.0,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": -0.5,
+   "readback_calls": 0.0,
+   "tokens": 2150.075,
+   "duplicates": 0
+  },
+  {
+   "model": "qwen3:4b-q4_K_M",
+   "fault": "silent_partial",
+   "arm": "on_contract/recover",
+   "in_tests": true,
+   "n": 40,
+   "success": 0.0,
+   "wrong_commit": 1.0,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": -0.5,
+   "readback_calls": 0.0,
+   "tokens": 2150.075,
+   "duplicates": 0
+  },
+  {
+   "model": "qwen3:4b-q4_K_M",
+   "fault": "silent_partial",
+   "arm": "on_error/recover",
+   "in_tests": true,
+   "n": 40,
+   "success": 0.0,
+   "wrong_commit": 1.0,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": -0.5,
+   "readback_calls": 0.0,
+   "tokens": 2150.075,
+   "duplicates": 0
+  },
+  {
+   "model": "qwen3:4b-q4_K_M",
+   "fault": "silent_partial",
+   "arm": "on_readback/abstain",
+   "in_tests": true,
+   "n": 40,
+   "success": 0.0,
+   "wrong_commit": 0.0,
+   "abstain": 1.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": -1.325,
+   "readback_calls": 1.675,
+   "tokens": 873.5,
+   "duplicates": 0
+  },
+  {
+   "model": "qwen3:4b-q4_K_M",
+   "fault": "silent_partial",
+   "arm": "on_readback/recover",
+   "in_tests": true,
+   "n": 40,
+   "success": 0.0,
+   "wrong_commit": 0.725,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": -0.5,
+   "readback_calls": 2.5,
+   "tokens": 2887.35,
+   "duplicates": 0
+  },
+  {
+   "model": "qwen3:4b-q4_K_M",
+   "fault": "silent_partial",
+   "arm": "on_uncertainty/recover",
+   "in_tests": true,
+   "n": 40,
+   "success": 0.0,
+   "wrong_commit": 1.0,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": -0.5,
+   "readback_calls": 0.0,
+   "tokens": 2150.075,
+   "duplicates": 0
+  },
+  {
+   "model": "qwen3:4b-q4_K_M",
+   "fault": "silent_partial",
+   "arm": "readback_contract/recover",
+   "in_tests": true,
+   "n": 40,
+   "success": 0.0,
+   "wrong_commit": 0.725,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": -0.5,
+   "readback_calls": 2.5,
+   "tokens": 2887.35,
+   "duplicates": 0
+  },
+  {
+   "model": "qwen3:4b-q4_K_M",
+   "fault": "silent_read",
+   "arm": "always/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.13333333333333333,
+   "wrong_commit": 0.075,
+   "abstain": 0.0,
+   "false_flags_per_episode": 3.95,
+   "extra_calls": 0.9083333333333333,
+   "readback_calls": 0.0,
+   "tokens": 8609.258333333333,
+   "duplicates": 3
+  },
+  {
+   "model": "qwen3:4b-q4_K_M",
+   "fault": "silent_read",
+   "arm": "never/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.525,
+   "wrong_commit": 0.25,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": 0.43333333333333335,
+   "readback_calls": 0.0,
+   "tokens": 4893.733333333334,
+   "duplicates": 8
+  },
+  {
+   "model": "qwen3:4b-q4_K_M",
+   "fault": "silent_read",
+   "arm": "on_contract/abstain",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.4583333333333333,
+   "wrong_commit": 0.11666666666666667,
+   "abstain": 0.25,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": -0.35833333333333334,
+   "readback_calls": 0.0,
+   "tokens": 3655.8083333333334,
+   "duplicates": 6
+  },
+  {
+   "model": "qwen3:4b-q4_K_M",
+   "fault": "silent_read",
+   "arm": "on_contract/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.5083333333333333,
+   "wrong_commit": 0.15833333333333333,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.15,
+   "extra_calls": 0.575,
+   "readback_calls": 0.0,
+   "tokens": 5449.183333333333,
+   "duplicates": 7
+  },
+  {
+   "model": "qwen3:4b-q4_K_M",
+   "fault": "silent_read",
+   "arm": "on_error/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.48333333333333334,
+   "wrong_commit": 0.225,
+   "abstain": 0.0,
+   "false_flags_per_episode": 1.1666666666666667,
+   "extra_calls": 0.775,
+   "readback_calls": 0.0,
+   "tokens": 6044.316666666667,
+   "duplicates": 5
+  },
+  {
+   "model": "qwen3:4b-q4_K_M",
+   "fault": "silent_read",
+   "arm": "on_readback/abstain",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.525,
+   "wrong_commit": 0.25,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": 0.43333333333333335,
+   "readback_calls": 2.158333333333333,
+   "tokens": 4893.733333333334,
+   "duplicates": 8
+  },
+  {
+   "model": "qwen3:4b-q4_K_M",
+   "fault": "silent_read",
+   "arm": "on_readback/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.525,
+   "wrong_commit": 0.25,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": 0.43333333333333335,
+   "readback_calls": 2.158333333333333,
+   "tokens": 4893.733333333334,
+   "duplicates": 8
+  },
+  {
+   "model": "qwen3:4b-q4_K_M",
+   "fault": "silent_read",
+   "arm": "on_uncertainty/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.48333333333333334,
+   "wrong_commit": 0.25,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.9166666666666666,
+   "extra_calls": 0.6583333333333333,
+   "readback_calls": 0.0,
+   "tokens": 5772.483333333334,
+   "duplicates": 8
+  },
+  {
+   "model": "qwen3:4b-q4_K_M",
+   "fault": "silent_read",
+   "arm": "readback_contract/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.5083333333333333,
+   "wrong_commit": 0.15833333333333333,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.15,
+   "extra_calls": 0.575,
+   "readback_calls": 2.1083333333333334,
+   "tokens": 5449.183333333333,
+   "duplicates": 7
+  },
+  {
+   "model": "qwen3:4b-q4_K_M",
+   "fault": "silent_wrong",
+   "arm": "always/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.008333333333333333,
+   "wrong_commit": 0.25,
+   "abstain": 0.0,
+   "false_flags_per_episode": 3.575,
+   "extra_calls": 0.8666666666666667,
+   "readback_calls": 0.0,
+   "tokens": 8223.066666666668,
+   "duplicates": 5
+  },
+  {
+   "model": "qwen3:4b-q4_K_M",
+   "fault": "silent_wrong",
+   "arm": "never/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.058333333333333334,
+   "wrong_commit": 0.775,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": 0.35833333333333334,
+   "readback_calls": 0.0,
+   "tokens": 4562.333333333333,
+   "duplicates": 6
+  },
+  {
+   "model": "qwen3:4b-q4_K_M",
+   "fault": "silent_wrong",
+   "arm": "on_contract/abstain",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.058333333333333334,
+   "wrong_commit": 0.775,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": 0.35833333333333334,
+   "readback_calls": 0.0,
+   "tokens": 4562.333333333333,
+   "duplicates": 6
+  },
+  {
+   "model": "qwen3:4b-q4_K_M",
+   "fault": "silent_wrong",
+   "arm": "on_contract/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.058333333333333334,
+   "wrong_commit": 0.775,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": 0.35833333333333334,
+   "readback_calls": 0.0,
+   "tokens": 4562.333333333333,
+   "duplicates": 6
+  },
+  {
+   "model": "qwen3:4b-q4_K_M",
+   "fault": "silent_wrong",
+   "arm": "on_error/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.058333333333333334,
+   "wrong_commit": 0.75,
+   "abstain": 0.0,
+   "false_flags_per_episode": 1.075,
+   "extra_calls": 0.6666666666666666,
+   "readback_calls": 0.0,
+   "tokens": 5516.208333333333,
+   "duplicates": 5
+  },
+  {
+   "model": "qwen3:4b-q4_K_M",
+   "fault": "silent_wrong",
+   "arm": "on_readback/abstain",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.058333333333333334,
+   "wrong_commit": 0.0,
+   "abstain": 0.8833333333333333,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": -0.3333333333333333,
+   "readback_calls": 1.7583333333333333,
+   "tokens": 2722.4166666666665,
+   "duplicates": 3
+  },
+  {
+   "model": "qwen3:4b-q4_K_M",
+   "fault": "silent_wrong",
+   "arm": "on_readback/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.058333333333333334,
+   "wrong_commit": 0.30833333333333335,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": 0.975,
+   "readback_calls": 2.2916666666666665,
+   "tokens": 7014.05,
+   "duplicates": 5
+  },
+  {
+   "model": "qwen3:4b-q4_K_M",
+   "fault": "silent_wrong",
+   "arm": "on_uncertainty/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.058333333333333334,
+   "wrong_commit": 0.7666666666666667,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.7,
+   "extra_calls": 0.4583333333333333,
+   "readback_calls": 0.0,
+   "tokens": 4992.125,
+   "duplicates": 9
+  },
+  {
+   "model": "qwen3:4b-q4_K_M",
+   "fault": "silent_wrong",
+   "arm": "readback_contract/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.058333333333333334,
+   "wrong_commit": 0.31666666666666665,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.11666666666666667,
+   "extra_calls": 0.9333333333333333,
+   "readback_calls": 2.183333333333333,
+   "tokens": 6939.675,
+   "duplicates": 5
+  },
+  {
+   "model": "qwen3:8b-q4_K_M",
+   "fault": "clean",
+   "arm": "always/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.6916666666666667,
+   "wrong_commit": 0.1,
+   "abstain": 0.0,
+   "false_flags_per_episode": 5.025,
+   "extra_calls": 1.3583333333333334,
+   "readback_calls": 0.0,
+   "tokens": 6328.925,
+   "duplicates": 0
+  },
+  {
+   "model": "qwen3:8b-q4_K_M",
+   "fault": "clean",
+   "arm": "never/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.7666666666666667,
+   "wrong_commit": 0.20833333333333334,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": 0.24166666666666667,
+   "readback_calls": 0.0,
+   "tokens": 3573.7,
+   "duplicates": 0
+  },
+  {
+   "model": "qwen3:8b-q4_K_M",
+   "fault": "clean",
+   "arm": "on_contract/abstain",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.7666666666666667,
+   "wrong_commit": 0.20833333333333334,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": 0.24166666666666667,
+   "readback_calls": 0.0,
+   "tokens": 3573.7,
+   "duplicates": 0
+  },
+  {
+   "model": "qwen3:8b-q4_K_M",
+   "fault": "clean",
+   "arm": "on_contract/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.7666666666666667,
+   "wrong_commit": 0.20833333333333334,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": 0.24166666666666667,
+   "readback_calls": 0.0,
+   "tokens": 3573.7,
+   "duplicates": 0
+  },
+  {
+   "model": "qwen3:8b-q4_K_M",
+   "fault": "clean",
+   "arm": "on_error/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.775,
+   "wrong_commit": 0.225,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.625,
+   "extra_calls": 0.225,
+   "readback_calls": 0.0,
+   "tokens": 3626.233333333333,
+   "duplicates": 0
+  },
+  {
+   "model": "qwen3:8b-q4_K_M",
+   "fault": "clean",
+   "arm": "on_readback/abstain",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.7666666666666667,
+   "wrong_commit": 0.20833333333333334,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": 0.24166666666666667,
+   "readback_calls": 2.1166666666666667,
+   "tokens": 3573.7,
+   "duplicates": 0
+  },
+  {
+   "model": "qwen3:8b-q4_K_M",
+   "fault": "clean",
+   "arm": "on_readback/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.7666666666666667,
+   "wrong_commit": 0.20833333333333334,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": 0.24166666666666667,
+   "readback_calls": 2.1166666666666667,
+   "tokens": 3573.7,
+   "duplicates": 0
+  },
+  {
+   "model": "qwen3:8b-q4_K_M",
+   "fault": "clean",
+   "arm": "on_uncertainty/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.775,
+   "wrong_commit": 0.2,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.325,
+   "extra_calls": 0.2916666666666667,
+   "readback_calls": 0.0,
+   "tokens": 3725.133333333333,
+   "duplicates": 0
+  },
+  {
+   "model": "qwen3:8b-q4_K_M",
+   "fault": "clean",
+   "arm": "readback_contract/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.7666666666666667,
+   "wrong_commit": 0.20833333333333334,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": 0.24166666666666667,
+   "readback_calls": 2.1166666666666667,
+   "tokens": 3573.7,
+   "duplicates": 0
+  },
+  {
+   "model": "qwen3:8b-q4_K_M",
+   "fault": "delayed",
+   "arm": "always/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.6666666666666666,
+   "wrong_commit": 0.10833333333333334,
+   "abstain": 0.0,
+   "false_flags_per_episode": 5.441666666666666,
+   "extra_calls": 1.775,
+   "readback_calls": 0.0,
+   "tokens": 7103.15,
+   "duplicates": 0
+  },
+  {
+   "model": "qwen3:8b-q4_K_M",
+   "fault": "delayed",
+   "arm": "never/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.7666666666666667,
+   "wrong_commit": 0.20833333333333334,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": 0.23333333333333334,
+   "readback_calls": 0.0,
+   "tokens": 3563.8166666666666,
+   "duplicates": 0
+  },
+  {
+   "model": "qwen3:8b-q4_K_M",
+   "fault": "delayed",
+   "arm": "on_contract/abstain",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.7666666666666667,
+   "wrong_commit": 0.20833333333333334,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": 0.23333333333333334,
+   "readback_calls": 0.0,
+   "tokens": 3563.8166666666666,
+   "duplicates": 0
+  },
+  {
+   "model": "qwen3:8b-q4_K_M",
+   "fault": "delayed",
+   "arm": "on_contract/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.7666666666666667,
+   "wrong_commit": 0.20833333333333334,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": 0.23333333333333334,
+   "readback_calls": 0.0,
+   "tokens": 3563.8166666666666,
+   "duplicates": 0
+  },
+  {
+   "model": "qwen3:8b-q4_K_M",
+   "fault": "delayed",
+   "arm": "on_error/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.775,
+   "wrong_commit": 0.225,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.6166666666666667,
+   "extra_calls": 0.21666666666666667,
+   "readback_calls": 0.0,
+   "tokens": 3615.125,
+   "duplicates": 0
+  },
+  {
+   "model": "qwen3:8b-q4_K_M",
+   "fault": "delayed",
+   "arm": "on_readback/abstain",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.0,
+   "wrong_commit": 0.03333333333333333,
+   "abstain": 0.95,
+   "false_flags_per_episode": 0.95,
+   "extra_calls": -0.525,
+   "readback_calls": 1.675,
+   "tokens": 2139.125,
+   "duplicates": 0
+  },
+  {
+   "model": "qwen3:8b-q4_K_M",
+   "fault": "delayed",
+   "arm": "on_readback/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.6833333333333333,
+   "wrong_commit": 0.18333333333333332,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.9666666666666667,
+   "extra_calls": 1.5,
+   "readback_calls": 2.6,
+   "tokens": 5432.6,
+   "duplicates": 0
+  },
+  {
+   "model": "qwen3:8b-q4_K_M",
+   "fault": "delayed",
+   "arm": "on_uncertainty/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.775,
+   "wrong_commit": 0.19166666666666668,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.30833333333333335,
+   "extra_calls": 0.26666666666666666,
+   "readback_calls": 0.0,
+   "tokens": 3703.741666666667,
+   "duplicates": 0
+  },
+  {
+   "model": "qwen3:8b-q4_K_M",
+   "fault": "delayed",
+   "arm": "readback_contract/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.6833333333333333,
+   "wrong_commit": 0.18333333333333332,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.9666666666666667,
+   "extra_calls": 1.5,
+   "readback_calls": 2.6,
+   "tokens": 5432.6,
+   "duplicates": 0
+  },
+  {
+   "model": "qwen3:8b-q4_K_M",
+   "fault": "loud",
+   "arm": "always/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.6833333333333333,
+   "wrong_commit": 0.11666666666666667,
+   "abstain": 0.0,
+   "false_flags_per_episode": 4.958333333333333,
+   "extra_calls": 2.283333333333333,
+   "readback_calls": 0.0,
+   "tokens": 7546.225,
+   "duplicates": 0
+  },
+  {
+   "model": "qwen3:8b-q4_K_M",
+   "fault": "loud",
+   "arm": "never/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.7416666666666667,
+   "wrong_commit": 0.2,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": 1.4083333333333334,
+   "readback_calls": 0.0,
+   "tokens": 4809.816666666667,
+   "duplicates": 0
+  },
+  {
+   "model": "qwen3:8b-q4_K_M",
+   "fault": "loud",
+   "arm": "on_contract/abstain",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.7416666666666667,
+   "wrong_commit": 0.2,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": 1.4083333333333334,
+   "readback_calls": 0.0,
+   "tokens": 4809.816666666667,
+   "duplicates": 0
+  },
+  {
+   "model": "qwen3:8b-q4_K_M",
+   "fault": "loud",
+   "arm": "on_contract/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.7416666666666667,
+   "wrong_commit": 0.2,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": 1.4083333333333334,
+   "readback_calls": 0.0,
+   "tokens": 4809.816666666667,
+   "duplicates": 0
+  },
+  {
+   "model": "qwen3:8b-q4_K_M",
+   "fault": "loud",
+   "arm": "on_error/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.7833333333333333,
+   "wrong_commit": 0.175,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.6833333333333333,
+   "extra_calls": 1.6333333333333333,
+   "readback_calls": 0.0,
+   "tokens": 5493.8,
+   "duplicates": 2
+  },
+  {
+   "model": "qwen3:8b-q4_K_M",
+   "fault": "loud",
+   "arm": "on_readback/abstain",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.7416666666666667,
+   "wrong_commit": 0.2,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": 1.4083333333333334,
+   "readback_calls": 2.025,
+   "tokens": 4809.816666666667,
+   "duplicates": 0
+  },
+  {
+   "model": "qwen3:8b-q4_K_M",
+   "fault": "loud",
+   "arm": "on_readback/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.7416666666666667,
+   "wrong_commit": 0.2,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": 1.4083333333333334,
+   "readback_calls": 2.025,
+   "tokens": 4809.816666666667,
+   "duplicates": 0
+  },
+  {
+   "model": "qwen3:8b-q4_K_M",
+   "fault": "loud",
+   "arm": "on_uncertainty/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.6,
+   "wrong_commit": 0.19166666666666668,
+   "abstain": 0.0,
+   "false_flags_per_episode": 1.8416666666666666,
+   "extra_calls": 2.1166666666666667,
+   "readback_calls": 0.0,
+   "tokens": 6730.441666666667,
+   "duplicates": 0
+  },
+  {
+   "model": "qwen3:8b-q4_K_M",
+   "fault": "loud",
+   "arm": "readback_contract/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.7416666666666667,
+   "wrong_commit": 0.2,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": 1.4083333333333334,
+   "readback_calls": 2.025,
+   "tokens": 4809.816666666667,
+   "duplicates": 0
+  },
+  {
+   "model": "qwen3:8b-q4_K_M",
+   "fault": "silent_drop",
+   "arm": "always/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.13333333333333333,
+   "wrong_commit": 0.6166666666666667,
+   "abstain": 0.0,
+   "false_flags_per_episode": 4.558333333333334,
+   "extra_calls": 1.8833333333333333,
+   "readback_calls": 0.0,
+   "tokens": 7369.808333333333,
+   "duplicates": 0
+  },
+  {
+   "model": "qwen3:8b-q4_K_M",
+   "fault": "silent_drop",
+   "arm": "never/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.016666666666666666,
+   "wrong_commit": 0.9583333333333334,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": 0.24166666666666667,
+   "readback_calls": 0.0,
+   "tokens": 3573.7,
+   "duplicates": 0
+  },
+  {
+   "model": "qwen3:8b-q4_K_M",
+   "fault": "silent_drop",
+   "arm": "on_contract/abstain",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.016666666666666666,
+   "wrong_commit": 0.9583333333333334,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": 0.24166666666666667,
+   "readback_calls": 0.0,
+   "tokens": 3573.7,
+   "duplicates": 0
+  },
+  {
+   "model": "qwen3:8b-q4_K_M",
+   "fault": "silent_drop",
+   "arm": "on_contract/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.016666666666666666,
+   "wrong_commit": 0.9583333333333334,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": 0.24166666666666667,
+   "readback_calls": 0.0,
+   "tokens": 3573.7,
+   "duplicates": 0
+  },
+  {
+   "model": "qwen3:8b-q4_K_M",
+   "fault": "silent_drop",
+   "arm": "on_error/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.008333333333333333,
+   "wrong_commit": 0.9916666666666667,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.625,
+   "extra_calls": 0.225,
+   "readback_calls": 0.0,
+   "tokens": 3626.233333333333,
+   "duplicates": 0
+  },
+  {
+   "model": "qwen3:8b-q4_K_M",
+   "fault": "silent_drop",
+   "arm": "on_readback/abstain",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.016666666666666666,
+   "wrong_commit": 0.05,
+   "abstain": 0.9166666666666666,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": -0.6,
+   "readback_calls": 1.6333333333333333,
+   "tokens": 2125.525,
+   "duplicates": 0
+  },
+  {
+   "model": "qwen3:8b-q4_K_M",
+   "fault": "silent_drop",
+   "arm": "on_readback/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.3,
+   "wrong_commit": 0.5666666666666667,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": 1.1666666666666667,
+   "readback_calls": 2.5833333333333335,
+   "tokens": 4988.95,
+   "duplicates": 0
+  },
+  {
+   "model": "qwen3:8b-q4_K_M",
+   "fault": "silent_drop",
+   "arm": "on_uncertainty/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.016666666666666666,
+   "wrong_commit": 0.9583333333333334,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.325,
+   "extra_calls": 0.2916666666666667,
+   "readback_calls": 0.0,
+   "tokens": 3725.016666666667,
+   "duplicates": 0
+  },
+  {
+   "model": "qwen3:8b-q4_K_M",
+   "fault": "silent_drop",
+   "arm": "readback_contract/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.3,
+   "wrong_commit": 0.5666666666666667,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": 1.1666666666666667,
+   "readback_calls": 2.5833333333333335,
+   "tokens": 4988.95,
+   "duplicates": 0
+  },
+  {
+   "model": "qwen3:8b-q4_K_M",
+   "fault": "silent_partial",
+   "arm": "always/recover",
+   "in_tests": true,
+   "n": 40,
+   "success": 0.0,
+   "wrong_commit": 0.7,
+   "abstain": 0.0,
+   "false_flags_per_episode": 3.05,
+   "extra_calls": 1.05,
+   "readback_calls": 0.0,
+   "tokens": 5600.15,
+   "duplicates": 0
+  },
+  {
+   "model": "qwen3:8b-q4_K_M",
+   "fault": "silent_partial",
+   "arm": "never/recover",
+   "in_tests": true,
+   "n": 40,
+   "success": 0.0,
+   "wrong_commit": 1.0,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": -0.1,
+   "readback_calls": 0.0,
+   "tokens": 2463.375,
+   "duplicates": 0
+  },
+  {
+   "model": "qwen3:8b-q4_K_M",
+   "fault": "silent_partial",
+   "arm": "on_contract/abstain",
+   "in_tests": true,
+   "n": 40,
+   "success": 0.0,
+   "wrong_commit": 1.0,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": -0.1,
+   "readback_calls": 0.0,
+   "tokens": 2463.375,
+   "duplicates": 0
+  },
+  {
+   "model": "qwen3:8b-q4_K_M",
+   "fault": "silent_partial",
+   "arm": "on_contract/recover",
+   "in_tests": true,
+   "n": 40,
+   "success": 0.0,
+   "wrong_commit": 1.0,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": -0.1,
+   "readback_calls": 0.0,
+   "tokens": 2463.375,
+   "duplicates": 0
+  },
+  {
+   "model": "qwen3:8b-q4_K_M",
+   "fault": "silent_partial",
+   "arm": "on_error/recover",
+   "in_tests": true,
+   "n": 40,
+   "success": 0.0,
+   "wrong_commit": 1.0,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.4,
+   "extra_calls": -0.1,
+   "readback_calls": 0.0,
+   "tokens": 2559.075,
+   "duplicates": 0
+  },
+  {
+   "model": "qwen3:8b-q4_K_M",
+   "fault": "silent_partial",
+   "arm": "on_readback/abstain",
+   "in_tests": true,
+   "n": 40,
+   "success": 0.0,
+   "wrong_commit": 0.0,
+   "abstain": 1.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": -1.2,
+   "readback_calls": 1.5,
+   "tokens": 953.775,
+   "duplicates": 0
+  },
+  {
+   "model": "qwen3:8b-q4_K_M",
+   "fault": "silent_partial",
+   "arm": "on_readback/recover",
+   "in_tests": true,
+   "n": 40,
+   "success": 0.0,
+   "wrong_commit": 0.975,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": 0.5,
+   "readback_calls": 2.6,
+   "tokens": 3312.1,
+   "duplicates": 0
+  },
+  {
+   "model": "qwen3:8b-q4_K_M",
+   "fault": "silent_partial",
+   "arm": "on_uncertainty/recover",
+   "in_tests": true,
+   "n": 40,
+   "success": 0.0,
+   "wrong_commit": 1.0,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.05,
+   "extra_calls": -0.1,
+   "readback_calls": 0.0,
+   "tokens": 2470.95,
+   "duplicates": 0
+  },
+  {
+   "model": "qwen3:8b-q4_K_M",
+   "fault": "silent_partial",
+   "arm": "readback_contract/recover",
+   "in_tests": true,
+   "n": 40,
+   "success": 0.0,
+   "wrong_commit": 0.975,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": 0.5,
+   "readback_calls": 2.6,
+   "tokens": 3312.1,
+   "duplicates": 0
+  },
+  {
+   "model": "qwen3:8b-q4_K_M",
+   "fault": "silent_read",
+   "arm": "always/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.325,
+   "wrong_commit": 0.4,
+   "abstain": 0.0,
+   "false_flags_per_episode": 5.15,
+   "extra_calls": 2.341666666666667,
+   "readback_calls": 0.0,
+   "tokens": 8398.783333333333,
+   "duplicates": 0
+  },
+  {
+   "model": "qwen3:8b-q4_K_M",
+   "fault": "silent_read",
+   "arm": "never/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.45,
+   "wrong_commit": 0.5,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": 0.19166666666666668,
+   "readback_calls": 0.0,
+   "tokens": 3577.9583333333335,
+   "duplicates": 0
+  },
+  {
+   "model": "qwen3:8b-q4_K_M",
+   "fault": "silent_read",
+   "arm": "on_contract/abstain",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.38333333333333336,
+   "wrong_commit": 0.31666666666666665,
+   "abstain": 0.275,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": -0.48333333333333334,
+   "readback_calls": 0.0,
+   "tokens": 2679.15,
+   "duplicates": 0
+  },
+  {
+   "model": "qwen3:8b-q4_K_M",
+   "fault": "silent_read",
+   "arm": "on_contract/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.5083333333333333,
+   "wrong_commit": 0.4166666666666667,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.225,
+   "extra_calls": 0.5833333333333334,
+   "readback_calls": 0.0,
+   "tokens": 4333.033333333334,
+   "duplicates": 0
+  },
+  {
+   "model": "qwen3:8b-q4_K_M",
+   "fault": "silent_read",
+   "arm": "on_error/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.45,
+   "wrong_commit": 0.525,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.625,
+   "extra_calls": 0.25833333333333336,
+   "readback_calls": 0.0,
+   "tokens": 3800.075,
+   "duplicates": 0
+  },
+  {
+   "model": "qwen3:8b-q4_K_M",
+   "fault": "silent_read",
+   "arm": "on_readback/abstain",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.45,
+   "wrong_commit": 0.5,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": 0.19166666666666668,
+   "readback_calls": 2.066666666666667,
+   "tokens": 3577.9583333333335,
+   "duplicates": 0
+  },
+  {
+   "model": "qwen3:8b-q4_K_M",
+   "fault": "silent_read",
+   "arm": "on_readback/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.45,
+   "wrong_commit": 0.5,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": 0.19166666666666668,
+   "readback_calls": 2.066666666666667,
+   "tokens": 3577.9583333333335,
+   "duplicates": 0
+  },
+  {
+   "model": "qwen3:8b-q4_K_M",
+   "fault": "silent_read",
+   "arm": "on_uncertainty/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.4583333333333333,
+   "wrong_commit": 0.5083333333333333,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.26666666666666666,
+   "extra_calls": 0.26666666666666666,
+   "readback_calls": 0.0,
+   "tokens": 3765.7083333333335,
+   "duplicates": 0
+  },
+  {
+   "model": "qwen3:8b-q4_K_M",
+   "fault": "silent_read",
+   "arm": "readback_contract/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.5083333333333333,
+   "wrong_commit": 0.4166666666666667,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.225,
+   "extra_calls": 0.5833333333333334,
+   "readback_calls": 2.05,
+   "tokens": 4333.033333333334,
+   "duplicates": 0
+  },
+  {
+   "model": "qwen3:8b-q4_K_M",
+   "fault": "silent_wrong",
+   "arm": "always/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.016666666666666666,
+   "wrong_commit": 0.75,
+   "abstain": 0.0,
+   "false_flags_per_episode": 4.683333333333334,
+   "extra_calls": 2.0083333333333333,
+   "readback_calls": 0.0,
+   "tokens": 7466.141666666666,
+   "duplicates": 0
+  },
+  {
+   "model": "qwen3:8b-q4_K_M",
+   "fault": "silent_wrong",
+   "arm": "never/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.0,
+   "wrong_commit": 0.975,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": 0.24166666666666667,
+   "readback_calls": 0.0,
+   "tokens": 3573.8416666666667,
+   "duplicates": 0
+  },
+  {
+   "model": "qwen3:8b-q4_K_M",
+   "fault": "silent_wrong",
+   "arm": "on_contract/abstain",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.0,
+   "wrong_commit": 0.9666666666666667,
+   "abstain": 0.008333333333333333,
+   "false_flags_per_episode": 0.008333333333333333,
+   "extra_calls": 0.24166666666666667,
+   "readback_calls": 0.0,
+   "tokens": 3564.391666666667,
+   "duplicates": 0
+  },
+  {
+   "model": "qwen3:8b-q4_K_M",
+   "fault": "silent_wrong",
+   "arm": "on_contract/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.0,
+   "wrong_commit": 0.975,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.008333333333333333,
+   "extra_calls": 0.24166666666666667,
+   "readback_calls": 0.0,
+   "tokens": 3574.483333333333,
+   "duplicates": 0
+  },
+  {
+   "model": "qwen3:8b-q4_K_M",
+   "fault": "silent_wrong",
+   "arm": "on_error/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.0,
+   "wrong_commit": 1.0,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.625,
+   "extra_calls": 0.225,
+   "readback_calls": 0.0,
+   "tokens": 3626.233333333333,
+   "duplicates": 0
+  },
+  {
+   "model": "qwen3:8b-q4_K_M",
+   "fault": "silent_wrong",
+   "arm": "on_readback/abstain",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.0,
+   "wrong_commit": 0.041666666666666664,
+   "abstain": 0.9416666666666667,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": -0.5083333333333333,
+   "readback_calls": 1.7583333333333333,
+   "tokens": 2118.9416666666666,
+   "duplicates": 0
+  },
+  {
+   "model": "qwen3:8b-q4_K_M",
+   "fault": "silent_wrong",
+   "arm": "on_readback/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.008333333333333333,
+   "wrong_commit": 0.6916666666666667,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.0,
+   "extra_calls": 2.0833333333333335,
+   "readback_calls": 2.5,
+   "tokens": 6673.216666666666,
+   "duplicates": 0
+  },
+  {
+   "model": "qwen3:8b-q4_K_M",
+   "fault": "silent_wrong",
+   "arm": "on_uncertainty/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.0,
+   "wrong_commit": 0.975,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.325,
+   "extra_calls": 0.2916666666666667,
+   "readback_calls": 0.0,
+   "tokens": 3725.108333333333,
+   "duplicates": 0
+  },
+  {
+   "model": "qwen3:8b-q4_K_M",
+   "fault": "silent_wrong",
+   "arm": "readback_contract/recover",
+   "in_tests": true,
+   "n": 120,
+   "success": 0.008333333333333333,
+   "wrong_commit": 0.7083333333333334,
+   "abstain": 0.0,
+   "false_flags_per_episode": 0.44166666666666665,
+   "extra_calls": 2.2333333333333334,
+   "readback_calls": 2.408333333333333,
+   "tokens": 6868.85,
+   "duplicates": 0
+  }
+ ],
+ "tests": [
+  {
+   "name": "on_readback_vs_on_contract_silent_write",
+   "arm": "on_readback/recover",
+   "base": "on_contract/recover",
+   "faults": [
+    "silent_drop",
+    "silent_wrong",
+    "silent_partial"
+   ],
+   "n_pairs": 280,
+   "rescue": 35,
+   "harm": 0,
+   "p": 9.999000099990002e-05,
+   "p_mcnemar": 5.820766091346741e-11,
+   "diff": 0.13333333333333333,
+   "ci": [
+    0.09722222222222222,
+    0.1736111111111111
+   ],
+   "by_fault": {
+    "silent_drop": {
+     "diff": 0.2833333333333333,
+     "rescue": 34,
+     "harm": 0
+    },
+    "silent_wrong": {
+     "diff": 0.008333333333333333,
+     "rescue": 1,
+     "harm": 0
+    },
+    "silent_partial": {
+     "diff": 0.0,
+     "rescue": 0,
+     "harm": 0
+    }
+   },
+   "holm_p": 0.00029997000299970003
+  },
+  {
+   "name": "on_contract_vs_never_silent_read",
+   "arm": "on_contract/recover",
+   "base": "never/recover",
+   "faults": [
+    "silent_read"
+   ],
+   "n_pairs": 120,
+   "rescue": 8,
+   "harm": 1,
+   "p": 0.0638936106389361,
+   "p_mcnemar": 0.0390625,
+   "diff": 0.058333333333333334,
+   "ci": [
+    0.008333333333333333,
+    0.11666666666666667
+   ],
+   "by_fault": {
+    "silent_read": {
+     "diff": 0.058333333333333334,
+     "rescue": 8,
+     "harm": 1
+    }
+   },
+   "holm_p": 0.0638936106389361
+  },
+  {
+   "name": "readback_contract_vs_never_all",
+   "arm": "readback_contract/recover",
+   "base": "never/recover",
+   "faults": [
+    "clean",
+    "loud",
+    "silent_drop",
+    "silent_wrong",
+    "silent_partial",
+    "silent_read",
+    "delayed"
+   ],
+   "n_pairs": 760,
+   "rescue": 44,
+   "harm": 12,
+   "p": 0.0006999300069993001,
+   "p_mcnemar": 2.0876568218419767e-05,
+   "diff": 0.04365079365079365,
+   "ci": [
+    0.022619047619047615,
+    0.06468253968253969
+   ],
+   "by_fault": {
+    "clean": {
+     "diff": 0.0,
+     "rescue": 0,
+     "harm": 0
+    },
+    "loud": {
+     "diff": 0.0,
+     "rescue": 0,
+     "harm": 0
+    },
+    "silent_drop": {
+     "diff": 0.2833333333333333,
+     "rescue": 34,
+     "harm": 0
+    },
+    "silent_wrong": {
+     "diff": 0.008333333333333333,
+     "rescue": 1,
+     "harm": 0
+    },
+    "silent_partial": {
+     "diff": 0.0,
+     "rescue": 0,
+     "harm": 0
+    },
+    "silent_read": {
+     "diff": 0.058333333333333334,
+     "rescue": 8,
+     "harm": 1
+    },
+    "delayed": {
+     "diff": -0.08333333333333333,
+     "rescue": 1,
+     "harm": 11
+    }
+   },
+   "delayed_harm": 11,
+   "holm_p": 0.0013998600139986002
+  }
+ ],
+ "exploratory": [
+  {
+   "run_id": "final-claude-haiku-5-5-20261123T122505323442Z",
+   "model": "claude-haiku-5-5",
+   "split": "testA",
+   "episodes": 3420,
+   "tests": [
+    {
+     "name": "on_readback_vs_on_contract_silent_write",
+     "arm": "on_readback/recover",
+     "base": "on_contract/recover",
+     "faults": [
+      "silent_drop",
+      "silent_wrong",
+      "silent_partial"
+     ],
+     "n_pairs": 140,
+     "rescue": 116,
+     "harm": 0,
+     "p": 9.999000099990002e-05,
+     "p_mcnemar": 2.407412430484045e-35,
+     "diff": 0.8416666666666667,
+     "ci": [
+      0.7805555555555556,
+      0.9
+     ],
+     "by_fault": {
+      "silent_drop": {
+       "diff": 0.9333333333333333,
+       "rescue": 56,
+       "harm": 0
+      },
+      "silent_wrong": {
+       "diff": 0.85,
+       "rescue": 51,
+       "harm": 0
+      },
+      "silent_partial": {
+       "diff": 0.45,
+       "rescue": 9,
+       "harm": 0
+      }
+     },
+     "holm_p": 0.00029997000299970003
+    },
+    {
+     "name": "on_contract_vs_never_silent_read",
+     "arm": "on_contract/recover",
+     "base": "never/recover",
+     "faults": [
+      "silent_read"
+     ],
+     "n_pairs": 60,
+     "rescue": 11,
+     "harm": 0,
+     "p": 0.000999900009999,
+     "p_mcnemar": 0.0009765625,
+     "diff": 0.18333333333333332,
+     "ci": [
+      0.1,
+      0.2833333333333333
+     ],
+     "by_fault": {
+      "silent_read": {
+       "diff": 0.18333333333333332,
+       "rescue": 11,
+       "harm": 0
+      }
+     },
+     "holm_p": 0.000999900009999
+    },
+    {
+     "name": "readback_contract_vs_never_all",
+     "arm": "readback_contract/recover",
+     "base": "never/recover",
+     "faults": [
+      "clean",
+      "loud",
+      "silent_drop",
+      "silent_wrong",
+      "silent_partial",
+      "silent_read",
+      "delayed"
+     ],
+     "n_pairs": 380,
+     "rescue": 102,
+     "harm": 8,
+     "p": 9.999000099990002e-05,
+     "p_mcnemar": 6.8377855268965755e-22,
+     "diff": 0.2503968253968254,
+     "ci": [
+      0.22063492063492063,
+      0.28015873015873016
+     ],
+     "by_fault": {
+      "clean": {
+       "diff": 0.0,
+       "rescue": 0,
+       "harm": 0
+      },
+      "loud": {
+       "diff": 0.0,
+       "rescue": 0,
+       "harm": 0
+      },
+      "silent_drop": {
+       "diff": 0.9333333333333333,
+       "rescue": 56,
+       "harm": 0
+      },
+      "silent_wrong": {
+       "diff": 0.5666666666666667,
+       "rescue": 34,
+       "harm": 0
+      },
+      "silent_partial": {
+       "diff": 0.05,
+       "rescue": 1,
+       "harm": 0
+      },
+      "silent_read": {
+       "diff": 0.18333333333333332,
+       "rescue": 11,
+       "harm": 0
+      },
+      "delayed": {
+       "diff": -0.13333333333333333,
+       "rescue": 0,
+       "harm": 8
+      }
+     },
+     "delayed_harm": 8,
+     "holm_p": 0.00029997000299970003
+    }
+   ],
+   "silent_read_by_kind": {
+    "never/recover": {
+     "plausible": {
+      "n": 22,
+      "success": 9,
+      "flagged": 0
+     },
+     "implausible": {
+      "n": 16,
+      "success": 5,
+      "flagged": 0
+     }
+    },
+    "on_contract/recover": {
+     "plausible": {
+      "n": 22,
+      "success": 9,
+      "flagged": 0
+     },
+     "implausible": {
+      "n": 16,
+      "success": 16,
+      "flagged": 16
+     }
+    },
+    "on_readback/recover": {
+     "plausible": {
+      "n": 22,
+      "success": 9,
+      "flagged": 0
+     },
+     "implausible": {
+      "n": 16,
+      "success": 5,
+      "flagged": 0
+     }
+    }
+   },
+   "status_counts": {
+    "done": 3186,
+    "abstained": 216,
+    "parse_failure": 17,
+    "budget_exhausted": 1
+   },
+   "fault_applied_rate": {
+    "always/recover": {
+     "loud": 0.95,
+     "silent_drop": 0.95,
+     "silent_wrong": 0.95,
+     "silent_partial": 0.95,
+     "silent_read": 1.0,
+     "delayed": 0.95
+    },
+    "never/recover": {
+     "loud": 1.0,
+     "silent_drop": 1.0,
+     "silent_wrong": 1.0,
+     "silent_partial": 1.0,
+     "silent_read": 0.6333333333333333,
+     "delayed": 1.0
+    },
+    "on_contract/abstain": {
+     "loud": 1.0,
+     "silent_drop": 1.0,
+     "silent_wrong": 1.0,
+     "silent_partial": 1.0,
+     "silent_read": 0.6333333333333333,
+     "delayed": 1.0
+    },
+    "on_contract/recover": {
+     "loud": 1.0,
+     "silent_drop": 1.0,
+     "silent_wrong": 1.0,
+     "silent_partial": 1.0,
+     "silent_read": 0.6333333333333333,
+     "delayed": 1.0
+    },
+    "on_error/recover": {
+     "loud": 1.0,
+     "silent_drop": 1.0,
+     "silent_wrong": 1.0,
+     "silent_partial": 1.0,
+     "silent_read": 0.6333333333333333,
+     "delayed": 1.0
+    },
+    "on_readback/abstain": {
+     "loud": 1.0,
+     "silent_drop": 1.0,
+     "silent_wrong": 1.0,
+     "silent_partial": 1.0,
+     "silent_read": 0.6333333333333333,
+     "delayed": 1.0
+    },
+    "on_readback/recover": {
+     "loud": 1.0,
+     "silent_drop": 1.0,
+     "silent_wrong": 1.0,
+     "silent_partial": 1.0,
+     "silent_read": 0.6333333333333333,
+     "delayed": 1.0
+    },
+    "on_uncertainty/recover": {
+     "loud": 1.0,
+     "silent_drop": 1.0,
+     "silent_wrong": 1.0,
+     "silent_partial": 1.0,
+     "silent_read": 0.6666666666666666,
+     "delayed": 1.0
+    },
+    "readback_contract/recover": {
+     "loud": 1.0,
+     "silent_drop": 1.0,
+     "silent_wrong": 1.0,
+     "silent_partial": 1.0,
+     "silent_read": 0.6333333333333333,
+     "delayed": 1.0
+    }
+   },
+   "flag_rate_clean_delayed": {
+    "always/recover": 1.0,
+    "never/recover": 0.0,
+    "on_contract/abstain": 0.0,
+    "on_contract/recover": 0.0,
+    "on_error/recover": 0.0,
+    "on_readback/abstain": 0.1652892561983471,
+    "on_readback/recover": 0.10256410256410256,
+    "on_uncertainty/recover": 0.11428571428571428,
+    "readback_contract/recover": 0.10256410256410256
+   }
+  },
+  {
+   "run_id": "final-qwen3_4b-q4_K_M-20261124T011458069993Z",
+   "model": "qwen3:4b-q4_K_M",
+   "split": "testA",
+   "episodes": 6840,
+   "tests": [
+    {
+     "name": "on_readback_vs_on_contract_silent_write",
+     "arm": "on_readback/recover",
+     "base": "on_contract/recover",
+     "faults": [
+      "silent_drop",
+      "silent_wrong",
+      "silent_partial"
+     ],
+     "n_pairs": 280,
+     "rescue": 1,
+     "harm": 0,
+     "p": 1.0,
+     "p_mcnemar": 1.0,
+     "diff": 0.004166666666666667,
+     "ci": [
+      0.0,
+      0.0125
+     ],
+     "by_fault": {
+      "silent_drop": {
+       "diff": 0.008333333333333333,
+       "rescue": 1,
+       "harm": 0
+      },
+      "silent_wrong": {
+       "diff": 0.0,
+       "rescue": 0,
+       "harm": 0
+      },
+      "silent_partial": {
+       "diff": 0.0,
+       "rescue": 0,
+       "harm": 0
+      }
+     },
+     "holm_p": 1.0
+    },
+    {
+     "name": "on_contract_vs_never_silent_read",
+     "arm": "on_contract/recover",
+     "base": "never/recover",
+     "faults": [
+      "silent_read"
+     ],
+     "n_pairs": 120,
+     "rescue": 1,
+     "harm": 3,
+     "p": 0.630936906309369,
+     "p_mcnemar": 0.625,
+     "diff": -0.016666666666666666,
+     "ci": [
+      -0.05,
+      0.016666666666666666
+     ],
+     "by_fault": {
+      "silent_read": {
+       "diff": -0.016666666666666666,
+       "rescue": 1,
+       "harm": 3
+      }
+     },
+     "holm_p": 1.0
+    },
+    {
+     "name": "readback_contract_vs_never_all",
+     "arm": "readback_contract/recover",
+     "base": "never/recover",
+     "faults": [
+      "clean",
+      "loud",
+      "silent_drop",
+      "silent_wrong",
+      "silent_partial",
+      "silent_read",
+      "delayed"
+     ],
+     "n_pairs": 760,
+     "rescue": 3,
+     "harm": 62,
+     "p": 9.999000099990002e-05,
+     "p_mcnemar": 2.4842324378160363e-15,
+     "diff": -0.07658730158730158,
+     "ci": [
+      -0.09186507936507936,
+      -0.060515873015873016
+     ],
+     "by_fault": {
+      "clean": {
+       "diff": 0.0,
+       "rescue": 0,
+       "harm": 0
+      },
+      "loud": {
+       "diff": 0.0,
+       "rescue": 0,
+       "harm": 0
+      },
+      "silent_drop": {
+       "diff": 0.008333333333333333,
+       "rescue": 1,
+       "harm": 0
+      },
+      "silent_wrong": {
+       "diff": 0.0,
+       "rescue": 0,
+       "harm": 0
+      },
+      "silent_partial": {
+       "diff": 0.0,
+       "rescue": 0,
+       "harm": 0
+      },
+      "silent_read": {
+       "diff": -0.016666666666666666,
+       "rescue": 1,
+       "harm": 3
+      },
+      "delayed": {
+       "diff": -0.48333333333333334,
+       "rescue": 1,
+       "harm": 59
+      }
+     },
+     "delayed_harm": 59,
+     "holm_p": 0.00029997000299970003
+    }
+   ],
+   "silent_read_by_kind": {
+    "never/recover": {
+     "plausible": {
+      "n": 41,
+      "success": 13,
+      "flagged": 0
+     },
+     "implausible": {
+      "n": 30,
+      "success": 8,
+      "flagged": 0
+     }
+    },
+    "on_contract/recover": {
+     "plausible": {
+      "n": 41,
+      "success": 13,
+      "flagged": 0
+     },
+     "implausible": {
+      "n": 30,
+      "success": 6,
+      "flagged": 30
+     }
+    },
+    "on_readback/recover": {
+     "plausible": {
+      "n": 41,
+      "success": 13,
+      "flagged": 0
+     },
+     "implausible": {
+      "n": 30,
+      "success": 8,
+      "flagged": 0
+     }
+    }
+   },
+   "status_counts": {
+    "parse_failure": 1895,
+    "done": 4117,
+    "abstained": 404,
+    "budget_exhausted": 424
+   },
+   "fault_applied_rate": {
+    "always/recover": {
+     "loud": 0.975,
+     "silent_drop": 0.9833333333333333,
+     "silent_wrong": 0.9583333333333334,
+     "silent_partial": 1.0,
+     "silent_read": 0.625,
+     "delayed": 0.975
+    },
+    "never/recover": {
+     "loud": 0.9583333333333334,
+     "silent_drop": 0.9583333333333334,
+     "silent_wrong": 0.8916666666666667,
+     "silent_partial": 1.0,
+     "silent_read": 0.5916666666666667,
+     "delayed": 0.9583333333333334
+    },
+    "on_contract/abstain": {
+     "loud": 0.9583333333333334,
+     "silent_drop": 0.9583333333333334,
+     "silent_wrong": 0.8916666666666667,
+     "silent_partial": 1.0,
+     "silent_read": 0.5916666666666667,
+     "delayed": 0.9583333333333334
+    },
+    "on_contract/recover": {
+     "loud": 0.9583333333333334,
+     "silent_drop": 0.9583333333333334,
+     "silent_wrong": 0.8916666666666667,
+     "silent_partial": 1.0,
+     "silent_read": 0.5916666666666667,
+     "delayed": 0.9583333333333334
+    },
+    "on_error/recover": {
+     "loud": 0.9666666666666667,
+     "silent_drop": 0.9583333333333334,
+     "silent_wrong": 0.8916666666666667,
+     "silent_partial": 1.0,
+     "silent_read": 0.5916666666666667,
+     "delayed": 0.9583333333333334
+    },
+    "on_readback/abstain": {
+     "loud": 0.9583333333333334,
+     "silent_drop": 0.9583333333333334,
+     "silent_wrong": 0.8916666666666667,
+     "silent_partial": 1.0,
+     "silent_read": 0.5916666666666667,
+     "delayed": 0.9583333333333334
+    },
+    "on_readback/recover": {
+     "loud": 0.9583333333333334,
+     "silent_drop": 0.9583333333333334,
+     "silent_wrong": 0.8916666666666667,
+     "silent_partial": 1.0,
+     "silent_read": 0.5916666666666667,
+     "delayed": 0.9583333333333334
+    },
+    "on_uncertainty/recover": {
+     "loud": 0.9666666666666667,
+     "silent_drop": 0.9666666666666667,
+     "silent_wrong": 0.9083333333333333,
+     "silent_partial": 1.0,
+     "silent_read": 0.6,
+     "delayed": 0.9666666666666667
+    },
+    "readback_contract/recover": {
+     "loud": 0.9583333333333334,
+     "silent_drop": 0.9583333333333334,
+     "silent_wrong": 0.8916666666666667,
+     "silent_partial": 1.0,
+     "silent_read": 0.5916666666666667,
+     "delayed": 0.9583333333333334
+    }
+   },
+   "flag_rate_clean_delayed": {
+    "always/recover": 1.0,
+    "never/recover": 0.0,
+    "on_contract/abstain": 0.0,
+    "on_contract/recover": 0.0,
+    "on_error/recover": 0.24807692307692308,
+    "on_readback/abstain": 0.13058419243986255,
+    "on_readback/recover": 0.1143131604226705,
+    "on_uncertainty/recover": 0.19436052366565962,
+    "readback_contract/recover": 0.1143131604226705
+   }
+  },
+  {
+   "run_id": "final-qwen3_8b-q4_K_M-20261123T150409505835Z",
+   "model": "qwen3:8b-q4_K_M",
+   "split": "testA",
+   "episodes": 6840,
+   "tests": [
+    {
+     "name": "on_readback_vs_on_contract_silent_write",
+     "arm": "on_readback/recover",
+     "base": "on_contract/recover",
+     "faults": [
+      "silent_drop",
+      "silent_wrong",
+      "silent_partial"
+     ],
+     "n_pairs": 280,
+     "rescue": 35,
+     "harm": 0,
+     "p": 9.999000099990002e-05,
+     "p_mcnemar": 5.820766091346741e-11,
+     "diff": 0.13333333333333333,
+     "ci": [
+      0.09722222222222222,
+      0.1736111111111111
+     ],
+     "by_fault": {
+      "silent_drop": {
+       "diff": 0.2833333333333333,
+       "rescue": 34,
+       "harm": 0
+      },
+      "silent_wrong": {
+       "diff": 0.008333333333333333,
+       "rescue": 1,
+       "harm": 0
+      },
+      "silent_partial": {
+       "diff": 0.0,
+       "rescue": 0,
+       "harm": 0
+      }
+     },
+     "holm_p": 0.00029997000299970003
+    },
+    {
+     "name": "on_contract_vs_never_silent_read",
+     "arm": "on_contract/recover",
+     "base": "never/recover",
+     "faults": [
+      "silent_read"
+     ],
+     "n_pairs": 120,
+     "rescue": 8,
+     "harm": 1,
+     "p": 0.0638936106389361,
+     "p_mcnemar": 0.0390625,
+     "diff": 0.058333333333333334,
+     "ci": [
+      0.008333333333333333,
+      0.11666666666666667
+     ],
+     "by_fault": {
+      "silent_read": {
+       "diff": 0.058333333333333334,
+       "rescue": 8,
+       "harm": 1
+      }
+     },
+     "holm_p": 0.0638936106389361
+    },
+    {
+     "name": "readback_contract_vs_never_all",
+     "arm": "readback_contract/recover",
+     "base": "never/recover",
+     "faults": [
+      "clean",
+      "loud",
+      "silent_drop",
+      "silent_wrong",
+      "silent_partial",
+      "silent_read",
+      "delayed"
+     ],
+     "n_pairs": 760,
+     "rescue": 44,
+     "harm": 12,
+     "p": 0.0006999300069993001,
+     "p_mcnemar": 2.0876568218419767e-05,
+     "diff": 0.04365079365079365,
+     "ci": [
+      0.022619047619047615,
+      0.06468253968253969
+     ],
+     "by_fault": {
+      "clean": {
+       "diff": 0.0,
+       "rescue": 0,
+       "harm": 0
+      },
+      "loud": {
+       "diff": 0.0,
+       "rescue": 0,
+       "harm": 0
+      },
+      "silent_drop": {
+       "diff": 0.2833333333333333,
+       "rescue": 34,
+       "harm": 0
+      },
+      "silent_wrong": {
+       "diff": 0.008333333333333333,
+       "rescue": 1,
+       "harm": 0
+      },
+      "silent_partial": {
+       "diff": 0.0,
+       "rescue": 0,
+       "harm": 0
+      },
+      "silent_read": {
+       "diff": 0.058333333333333334,
+       "rescue": 8,
+       "harm": 1
+      },
+      "delayed": {
+       "diff": -0.08333333333333333,
+       "rescue": 1,
+       "harm": 11
+      }
+     },
+     "delayed_harm": 11,
+     "holm_p": 0.0013998600139986002
+    }
+   ],
+   "silent_read_by_kind": {
+    "never/recover": {
+     "plausible": {
+      "n": 38,
+      "success": 6,
+      "flagged": 0
+     },
+     "implausible": {
+      "n": 33,
+      "success": 8,
+      "flagged": 0
+     }
+    },
+    "on_contract/recover": {
+     "plausible": {
+      "n": 38,
+      "success": 6,
+      "flagged": 0
+     },
+     "implausible": {
+      "n": 33,
+      "success": 15,
+      "flagged": 33
+     }
+    },
+    "on_readback/recover": {
+     "plausible": {
+      "n": 38,
+      "success": 6,
+      "flagged": 0
+     },
+     "implausible": {
+      "n": 33,
+      "success": 8,
+      "flagged": 0
+     }
+    }
+   },
+   "status_counts": {
+    "budget_exhausted": 208,
+    "done": 5932,
+    "parse_failure": 289,
+    "abstained": 411
+   },
+   "fault_applied_rate": {
+    "always/recover": {
+     "loud": 0.9916666666666667,
+     "silent_drop": 0.9916666666666667,
+     "silent_wrong": 0.9916666666666667,
+     "silent_partial": 1.0,
+     "silent_read": 0.8583333333333333,
+     "delayed": 0.9916666666666667
+    },
+    "never/recover": {
+     "loud": 0.95,
+     "silent_drop": 0.9333333333333333,
+     "silent_wrong": 0.9583333333333334,
+     "silent_partial": 1.0,
+     "silent_read": 0.5916666666666667,
+     "delayed": 0.95
+    },
+    "on_contract/abstain": {
+     "loud": 0.95,
+     "silent_drop": 0.9333333333333333,
+     "silent_wrong": 0.9583333333333334,
+     "silent_partial": 1.0,
+     "silent_read": 0.5916666666666667,
+     "delayed": 0.95
+    },
+    "on_contract/recover": {
+     "loud": 0.95,
+     "silent_drop": 0.9333333333333333,
+     "silent_wrong": 0.9583333333333334,
+     "silent_partial": 1.0,
+     "silent_read": 0.5916666666666667,
+     "delayed": 0.95
+    },
+    "on_error/recover": {
+     "loud": 0.975,
+     "silent_drop": 0.9583333333333334,
+     "silent_wrong": 0.975,
+     "silent_partial": 1.0,
+     "silent_read": 0.6,
+     "delayed": 0.9666666666666667
+    },
+    "on_readback/abstain": {
+     "loud": 0.95,
+     "silent_drop": 0.9333333333333333,
+     "silent_wrong": 0.9583333333333334,
+     "silent_partial": 1.0,
+     "silent_read": 0.5916666666666667,
+     "delayed": 0.95
+    },
+    "on_readback/recover": {
+     "loud": 0.95,
+     "silent_drop": 0.9333333333333333,
+     "silent_wrong": 0.9583333333333334,
+     "silent_partial": 1.0,
+     "silent_read": 0.5916666666666667,
+     "delayed": 0.95
+    },
+    "on_uncertainty/recover": {
+     "loud": 0.9583333333333334,
+     "silent_drop": 0.9416666666666667,
+     "silent_wrong": 0.9583333333333334,
+     "silent_partial": 1.0,
+     "silent_read": 0.6083333333333333,
+     "delayed": 0.95
+    },
+    "readback_contract/recover": {
+     "loud": 0.95,
+     "silent_drop": 0.9333333333333333,
+     "silent_wrong": 0.9583333333333334,
+     "silent_partial": 1.0,
+     "silent_read": 0.5916666666666667,
+     "delayed": 0.95
+    }
+   },
+   "flag_rate_clean_delayed": {
+    "always/recover": 1.0,
+    "never/recover": 0.0,
+    "on_contract/abstain": 0.0,
+    "on_contract/recover": 0.0,
+    "on_error/recover": 0.15969989281886388,
+    "on_readback/abstain": 0.1347517730496454,
+    "on_readback/recover": 0.10651974288337925,
+    "on_uncertainty/recover": 0.08025343189017951,
+    "readback_contract/recover": 0.10651974288337925
+   }
+  }
+ ],
+ "exploratory_excluded": []
+}

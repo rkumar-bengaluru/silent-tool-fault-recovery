@@ -1,0 +1,129 @@
+\section{Results}\label{sec:results}
+\begin{table}[t]
+\centering\small
+\input{generated/tab_primary}
+\caption{Pre-registered primary tests on Qwen3-8B with recover. P1: \texttt{on\_readback} minus
+\texttt{on\_contract} on the three silent write faults (\RPOneNPairs{} pairs); P2:
+\texttt{on\_contract} minus \texttt{never} on wrong reads (\RPTwoNPairs{} pairs); P3:
+\texttt{readback\_contract} minus \texttt{never} over all seven faults (\RPThreeNPairs{} pairs). Diff.\
+is the mean of per-task differences in success; the confidence interval resamples tasks; $p$ is the
+sign-flip permutation test and Holm $p$ corrects it across P1--P3. Rescue/harm count (task, fault,
+seed) pairs where only the first or only the second arm succeeded.}\label{tab:primary}
+\end{table}
+
+\paragraph{Primary tests.} Table~\ref{tab:primary} gives the confirmatory results. Read-back beats
+the contract on silent write faults (P1: \RPOneDiff{}, interval [\RPOneCiLo{}, \RPOneCiHi{}], Holm $p$
+\RPOneHolmP{}). Since the contract cannot flag these faults at the faulted call, on them it behaves
+like \texttt{never}, and P1 measures what one flag on the faulted write is worth. Descriptively (the per-fault split was
+pre-registered as a breakdown, not a test), almost the whole
+effect comes from dropped writes (\RPOneDropDiff{}); on wrong and partial writes the differences are
+\RPOneWrongDiff{} and \RPOnePartialDiff{}. P2 is not significant: the contract raises success on wrong
+reads by \RPTwoDiff{} (Holm $p$ \RPTwoHolmP{}). Its interval [\RPTwoCiLo{}, \RPTwoCiHi{}] excludes
+zero, so the test is inconclusive rather than evidence of no effect; the wrong-read fault fired in only
+a share \RExpQwenEightAppliedContractRead{} of contract episodes, which dilutes it. Combining both checks
+beats never recovering when averaged over all faults (P3: \RPThreeDiff{}, Holm $p$ \RPThreeHolmP{}), at
+a cost on delayed writes, where it harms \RPThreeDelayedHarmTotal{} pairs that \texttt{never} solved.
+
+\begin{figure}[t]
+\centering
+\pgfplotsset{xmin=0, xmax=1, enlarge y limits=0.06, legend columns=4}
+\pgfplotsset{onlymodel/.style={y filter/.code={\edef\tempa{\thisrow{model}}%
+  \ifx\tempa\tempb\else\def\pgfmathresult{inf}\fi}},
+  every axis/.append style={xbar, bar width=3pt, width=0.37\textwidth, height=6.4cm,
+  symbolic y coords={Never,Always,OnError,OnUnc,Contract,Readback,Both}, ytick=data,
+  xlabel={success rate}, xlabel style={font=\scriptsize},
+  y tick label style={font=\scriptsize}, x tick label style={font=\scriptsize}, title style={font=\small}},
+  every axis plot/.append style={draw=black, line width=0.2pt}}
+\newcommand{\faultbars}{%
+  \addplot[fill=darkgray] table[y=arm, x=drop, onlymodel]{generated/fig_success.dat};
+  \addplot[fill=gray] table[y=arm, x=wrong, onlymodel]{generated/fig_success.dat};
+  \addplot[fill=lightgray] table[y=arm, x=partial, onlymodel]{generated/fig_success.dat};
+  \addplot[fill=white] table[y=arm, x=read, onlymodel]{generated/fig_success.dat};}
+\def\tempb{QwenFour}%
+\begin{tikzpicture}\begin{axis}[title={Qwen3-4B}, legend to name=faultlegend,
+  legend style={font=\small}]
+\faultbars
+\legend{silent drop, silent wrong, silent partial, silent read}
+\end{axis}\end{tikzpicture}%
+\def\tempb{QwenEight}%
+\begin{tikzpicture}\begin{axis}[title={Qwen3-8B}, yticklabels={}]
+\faultbars
+\end{axis}\end{tikzpicture}%
+\def\tempb{Haiku}%
+\begin{tikzpicture}\begin{axis}[title={Haiku}, yticklabels={}]
+\faultbars
+\end{axis}\end{tikzpicture}
+
+\pgfplotslegendfromname{faultlegend}
+\caption{Success rate on the four silent faults for each trigger with recover. Each bar is one
+(model, fault, arm) cell of \RQwenEightDropReadbackN{} episodes for the Qwen models
+(\RQwenEightPartialReadbackN{} on partial) and \RHaikuDropReadbackN{} for Haiku
+(\RHaikuPartialReadbackN{} on partial). Full tables for all faults and arms are in
+Appendix~\ref{app:tables}.}\label{fig:success}
+\end{figure}
+
+\paragraph{Detection is not repair (exploratory).} Read-back flags silent write faults on every
+model. With abstain, an episode stops at the first flag, so the abstain rate under read-back measures
+how often it flags: on dropped writes \RHaikuDropReadbackAbstainAbstainRate{} for Haiku,
+\RQwenEightDropReadbackAbstainAbstainRate{} for Qwen3-8B and \RQwenFourDropReadbackAbstainAbstainRate{}
+for Qwen3-4B, and on wrong writes \RHaikuWrongReadbackAbstainAbstainRate{},
+\RQwenEightWrongReadbackAbstainAbstainRate{} and \RQwenFourWrongReadbackAbstainAbstainRate{}. What the
+agent does with the same flag under recover differs (Figure~\ref{fig:success}). On dropped writes Haiku
+reaches \RHaikuDropReadbackSuccess{}, Qwen3-8B \RQwenEightDropReadbackSuccess{} and Qwen3-4B only
+\RQwenFourDropReadbackSuccess{}, which is no better than \texttt{on\_uncertainty}
+(\RQwenFourDropOnUncSuccess{}). On wrong writes Haiku reaches \RHaikuWrongReadbackSuccess{} and on
+partial writes \RHaikuPartialReadbackSuccess{}, while Qwen3-8B reaches
+\RQwenEightWrongReadbackSuccess{} and Qwen3-4B \RQwenFourWrongReadbackSuccess{} on wrong writes, the
+same as its \texttt{never} arm. In the episodes we read, the small models re-apply the field they meant
+to write on wrong writes and miss the corrupted sibling field; on partial transfers a retry would debit
+twice. Read-back tells the agent \emph{that} a step went wrong, not \emph{what} went wrong. On
+Qwen3-4B, \RExpQwenFourStatusParseFailure{} of its \RExpQwenFourEpisodes{} episodes end in a parse
+failure, which depresses every arm. Its exploratory P3 difference is \RExpQwenFourPThreeDiff{}
+(interval [\RExpQwenFourPThreeCiLo{}, \RExpQwenFourPThreeCiHi{}]), and \RExpQwenFourPThreeDelayedHarm{}
+of its \RExpQwenFourPThreeHarm{} harmed pairs are delayed writes, where read-back's false alarms lower
+success from \RQwenFourDelayedNeverSuccess{} to \RQwenFourDelayedBothSuccess{}. Uncorrected versions of P1--P3 for all models are in
+Table~\ref{tab:exploratory}.
+
+\paragraph{Recover or abstain (exploratory).} Abstaining always scores as a failure here, so recover
+wins on success. What abstain buys is fewer wrong commits, episodes the agent declares done with the
+state wrong: on Qwen3-8B dropped writes the wrong-commit rate is \RQwenEightDropNeverWrongCommit{} under
+\texttt{never}, \RQwenEightDropReadbackWrongCommit{} under read-back with recover and
+\RQwenEightDropReadbackAbstainWrongCommit{} under read-back with abstain, and on wrong writes
+\RQwenEightWrongReadbackWrongCommit{} with recover against \RQwenEightWrongReadbackAbstainWrongCommit{}
+with abstain. Which response is better
+depends on what a wrong commit costs; the pre-registration (H5) treated this comparison as descriptive
+only.
+
+\paragraph{Wrong reads (exploratory).} The contract flags \RExpQwenEightByKindContractImplausibleFlagged{} of the
+\RExpQwenEightByKindContractImplausibleN{} implausible wrong reads on Qwen3-8B and \RExpQwenEightByKindContractPlausibleFlagged{} of
+the \RExpQwenEightByKindContractPlausibleN{} plausible ones. Among the implausible reads, success
+rises from \RExpQwenEightByKindNeverImplausibleSuccess{} episodes under \texttt{never} to
+\RExpQwenEightByKindContractImplausibleSuccess{} under the contract; on Haiku it rises from
+\RExpHaikuByKindNeverImplausibleSuccess{} to \RExpHaikuByKindContractImplausibleSuccess{} of
+\RExpHaikuByKindContractImplausibleN{}. On Qwen3-4B the contract flags
+\RExpQwenFourByKindContractImplausibleFlagged{} of \RExpQwenFourByKindContractImplausibleN{} implausible
+reads, yet success falls from \RExpQwenFourByKindNeverImplausibleSuccess{} to
+\RExpQwenFourByKindContractImplausibleSuccess{}. Read-back cannot see a wrong read, and
+neither checking trigger flags a plausible one; only \texttt{always} and, now and then,
+\texttt{on\_uncertainty} do.
+
+\paragraph{False alarms (exploratory).} On clean and delayed episodes read-back flags a share
+\RExpQwenEightFlagReadback{} of steps on Qwen3-8B, all of them on delayed writes, while the contract
+flags \RExpQwenEightFlagContract{}. \texttt{on\_error} flags \RExpQwenEightFlagOnError{}, on tool errors caused by the agent's own
+calls. With recover this costs Qwen3-8B least (delayed success
+\RQwenEightDelayedReadbackSuccess{} against \RQwenEightDelayedNeverSuccess{} for \texttt{never}), Haiku
+more (\RHaikuDelayedReadbackSuccess{} against \RHaikuDelayedNeverSuccess{}) and Qwen3-4B most
+(\RQwenFourDelayedReadbackSuccess{} against \RQwenFourDelayedNeverSuccess{}); with abstain it is fatal
+(\RQwenEightDelayedReadbackAbstainSuccess{}). Flagging every step cuts both ways: on clean tasks
+\texttt{always} lowers success from \RQwenFourCleanNeverSuccess{} to \RQwenFourCleanAlwaysSuccess{} on
+Qwen3-4B and from \RQwenEightCleanNeverSuccess{} to \RQwenEightCleanAlwaysSuccess{} on Qwen3-8B, but on
+Haiku it raises success on every silent fault, for example from \RHaikuDropNeverSuccess{} to
+\RHaikuDropAlwaysSuccess{} on dropped writes. The uncertainty trigger flags a share
+\RExpQwenEightFlagOnUnc{} of clean and delayed steps on Qwen3-8B, so it does fire, but its flags do
+not follow the faults: success on the silent faults is about that of \texttt{never}
+(Table~\ref{tab:full-qwen8}), and on loud faults it falls from \RQwenEightLoudNeverSuccess{} to
+\RQwenEightLoudOnUncSuccess{}. Of the pre-registered secondary hypotheses, H3 holds descriptively on
+Qwen3-8B (\texttt{readback\_contract} has the highest success over all faults of any arm), and H4 holds
+only in part: \texttt{always} raises the most false flags and both it and \texttt{on\_uncertainty} end
+below \texttt{never} over all faults, but \texttt{on\_uncertainty} raises fewer false flags than
+\texttt{on\_error} or read-back.

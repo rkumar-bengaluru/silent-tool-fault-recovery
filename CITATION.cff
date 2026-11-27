@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this code or data, please cite it as below."
+title: "silent-tool-fault-recovery"
+version: 1.0.0
+license: MIT
+repository-code: "https://github.com/rkumar-bengaluru/silent-tool-fault-recovery"
+authors:
+  - family-names: Kumar
+    given-names: Rupak
+    affiliation: "AvantaLabs AI"
+preferred-citation:
+  type: article
+  title: "When Should a Tool Agent Recover? Comparing Triggers for Silent Tool Faults with Recovery Held Fixed"
+  authors:
+    - family-names: Kumar
+      given-names: Rupak
+      affiliation: "AvantaLabs AI"
+  year: 2026

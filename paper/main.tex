@@ -1,0 +1,71 @@
+\documentclass[10pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{mathptmx}
+\usepackage[numbers]{natbib}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage[hidelinks]{hyperref}
+\input{generated/numbers}
+\IfFileExists{authors.tex}{\input{authors}}{\author{Anonymous}}% chktex 27
+\title{When Should a Tool Agent Recover? Comparing Triggers for Silent Tool Faults with Recovery Held Fixed}
+\date{}
+\begin{document}
+\maketitle
+\begin{abstract}
+Tool-using agents often receive a success result from a call that did something else. Recovery
+methods bundle \emph{when} to suspect a step with \emph{what} to do about it. We hold the agent and
+its recovery message fixed and vary only the trigger, comparing seven triggers on matched
+fault-injected tasks in a mock record service, under a pre-registered analysis. On \RQwenEightModel{},
+an independent read-back of the world state beats a return-value contract on silent write faults by
+\RPOneDiff{} in success (Holm $p$ \RPOneHolmP{}), almost entirely through dropped writes, which the
+contract cannot see, and combining both beats never recovering by \RPThreeDiff{} (Holm $p$
+\RPThreeHolmP{}). The contract does not significantly raise success on wrong reads (Holm $p$
+\RPTwoHolmP{}), an inconclusive result. Exploratory runs on \RQwenFourModel{} and \RHaikuModel{}
+suggest that detection and repair are separate problems: read-back flags silent write faults on every
+model, but only the strongest model repairs most of them, and on the smallest the combined check
+lowers success. On \RHaikuModel{}, adding the contract to read-back lowers success on wrong and partial
+writes; we offer a hypothesis for why.
+\end{abstract}
+\input{sections/intro}
+\input{sections/related}
+\input{sections/method}
+\input{sections/setup}
+\input{sections/results}
+\input{sections/discussion}
+\input{sections/limitations}
+\paragraph{Code and data.} The agent, service, fault injector, triggers, grader, frozen configurations,
+the development split, both test splits, and the episode logs behind every number in this paper are
+released at \url{https://github.com/rkumar-bengaluru/silent-tool-fault-recovery}, with a script that
+regenerates all tables and figures from the logs.
+\input{sections/ai}\label{endofmain}
+\bibliographystyle{plainnat}
+\bibliography{refs}
+\appendix
+\section{Full results}\label{app:tables}
+Tables~\ref{tab:full-qwen8},~\ref{tab:full-qwen4} and~\ref{tab:full-haiku} give the success rate for
+every fault and arm; bold marks the best arm per fault (ties are all bold). Each cell holds
+\RQwenEightDropReadbackN{} episodes for the Qwen models (\RQwenEightPartialReadbackN{} on partial) and
+\RHaikuDropReadbackN{} for Haiku (\RHaikuPartialReadbackN{} on partial). Table~\ref{tab:exploratory}
+gives uncorrected versions of P1--P3 on every model. Only Table~\ref{tab:primary} is confirmatory; the
+Qwen3-8B rows of Table~\ref{tab:exploratory} repeat its tests without correction.
+
+\begin{table}[h]\centering\small
+\resizebox{\textwidth}{!}{\input{generated/tab_success_QwenEight}}
+\caption{Success rate by fault and arm, \RQwenEightModel{}.}\label{tab:full-qwen8}
+\end{table}
+\begin{table}[h]\centering\small
+\resizebox{\textwidth}{!}{\input{generated/tab_success_QwenFour}}
+\caption{Success rate by fault and arm, \RQwenFourModel{}.}\label{tab:full-qwen4}
+\end{table}
+\begin{table}[h]\centering\small
+\resizebox{\textwidth}{!}{\input{generated/tab_success_Haiku}}
+\caption{Success rate by fault and arm, \RHaikuModel{}.}\label{tab:full-haiku}
+\end{table}
+\begin{table}[h]\centering\small
+\input{generated/tab_exploratory}
+\caption{Exploratory, uncorrected versions of P1--P3 on all three models. These $p$-values are not
+corrected for multiple comparisons.}\label{tab:exploratory}
+\end{table}
+\end{document}

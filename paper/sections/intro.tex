@@ -1,0 +1,38 @@
+\section{Introduction}\label{sec:intro}
+A tool-using agent usually learns that something went wrong from the tool itself: a timeout, an
+error code, a malformed reply. The harder case is a tool that reports success but did something
+else. A write is dropped, lands on the wrong field, or is applied only in part, and the result the
+agent sees is exactly what a correct call would have returned. Agents often fail to detect such quiet
+failures~\cite{kraishan2026loud}, benchmarks find implicit tool failures harder than explicit
+ones~\cite{zhu2026tools}, what an agent's history says about a step can hurt when the world does not
+match it~\cite{pakhomov2026cleaning}, and recent systems add monitors, contracts or verification layers
+to catch such failures~\cite{panthi2026outcome,babu2026selfhealing,dip2026invariantaware,kaynar2026tools}.
+
+These systems bundle two decisions: \emph{when} to suspect a step and \emph{what} to do about it.
+When they are compared, a better trigger and a better recovery procedure cannot be told apart. We
+separate them. We hold the agent, its prompt and its recovery message fixed, and vary only the trigger
+that decides when the agent is told that a step may be wrong. We compare seven triggers, from
+``never'' to an independent read-back of the world state after every write, on matched tasks where
+every arm draws the same fault and the same fault slot.
+
+This is a narrow controlled comparison on a mock record service, not a new method. Runtime monitors of
+action postconditions already trigger replanning in classical planning~\cite{cardoso2026rvreplan},
+and verification of non-atomic tool calls~\cite{mansoor2026verified}, handling of writes that may
+already have taken effect~\cite{li2026where}, outcome contracts~\cite{panthi2026outcome} and state
+checkers for wrong reads~\cite{zhang2026rite} exist for LLM agents. Outcome Monitors already vary when
+a fixed generic warning attaches, find that the recovery-tool list carries the gain, and detect no
+difference from timing~\cite{panthi2026outcome}. Our study differs in its faults, silent writes graded on the final
+world state; in including an independent world-state read-back alone and combined with a return-value
+check; in the full trigger set under recover, with abstain for the two checking triggers; and in a
+pre-registered analysis on a small local model, with a larger hosted model as an exploratory contrast. Our contributions are:
+\begin{itemize}
+  \item A matched, pre-registered comparison of seven triggers and two responses across seven fault
+        types, graded on the final world state (Sections~\ref{sec:method} and~\ref{sec:setup}).
+  \item On Qwen3-8B, read-back beats a return-value contract on silent write faults by \RPOneDiff{} in
+        success (Holm $p$ \RPOneHolmP{}), and combining both beats never recovering by
+        \RPThreeDiff{} (Holm $p$ \RPThreeHolmP{}) (Section~\ref{sec:results}).
+  \item An inconclusive pre-registered test: the contract does not significantly raise success on
+        wrong reads (Holm $p$ \RPTwoHolmP{}).
+  \item Exploratory evidence that detection and repair are separate problems: read-back flags silent
+        write faults on all three models, but only the strongest repairs most of them.
+\end{itemize}

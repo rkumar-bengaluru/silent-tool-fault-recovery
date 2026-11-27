@@ -1,0 +1,31 @@
+\section{Experimental setup}\label{sec:setup}
+\paragraph{Models.} The confirmatory model is \RQwenEightModel{} (Qwen3-8B below), run locally through
+Ollama. We also run \RQwenFourModel{} (Qwen3-4B) as a size contrast and \RHaikuModel{} (Haiku) as a
+stronger model. The local models use seeds \RQwenEightSeedFirst{} and \RQwenEightSeedSecond{}; Haiku
+uses one seed (\RHaikuSeedFirst{}). The final Claude run cost \RHaikuCostUsd{}; the local runs
+cost nothing. The models differ in provider, family (Qwen against Claude), size, quantisation, sampling, seeds and
+parse-failure rate, so ``stronger model'' below names a bundle of differences, not one factor.
+
+\paragraph{Splits.} A development split was used for every design choice. The uncertainty threshold
+was chosen there from a grid, by rescoring the confidences the agent had stated in development runs, as
+the value whose flag rate on clean and delayed steps came closest to read-back's; every lower value in
+the grid never fired. The test split reported here has \RTasksPerSplit{} tasks and was run once per
+model with frozen configurations; a second test split of the same size was never run, is not used for
+any result, and is released with the code for future work. Partial faults
+need a transfer or a create, which only two templates contain, so other (task, fault) pairs are
+skipped in every arm. A cell (model, fault, arm) therefore holds \RQwenEightDropReadbackN{} episodes
+for the Qwen models on most faults (\RQwenEightPartialReadbackN{} on partial), and
+\RHaikuDropReadbackN{} (\RHaikuPartialReadbackN{}) for Haiku.
+
+\paragraph{Pre-registration and tests.} Before the test split was run we fixed three primary
+comparisons, all on Qwen3-8B with recover: \textbf{P1}, \texttt{on\_readback} against
+\texttt{on\_contract} on the three silent write faults pooled; \textbf{P2}, \texttt{on\_contract}
+against \texttt{never} on wrong reads; and \textbf{P3}, \texttt{readback\_contract} against
+\texttt{never} averaged over all seven faults. For each task we average the paired differences in
+success (first arm minus second) over its faults and seeds; Diff.\ is the mean of these per-task
+differences. Each test is a two-sided sign-flip permutation test on the per-task differences, with
+Holm correction across the three. We also report a bootstrap confidence interval that resamples tasks,
+and the counts of (task, fault, seed) pairs rescued (only the first arm succeeded) and harmed (only the
+second did). The interval is descriptive; where it and the permutation $p$ disagree, the pre-registered
+permutation test decides. Everything else, including every test on the other two models, is exploratory
+and reported without correction.
