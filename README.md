@@ -6,6 +6,7 @@ Faults with Recovery Held Fixed"** (Rupak Kumar, AvantaLabs AI, 2026).
 [![Code DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24586177.svg)](https://doi.org/10.5281/zenodo.24586177)
 [![Logs DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24585902.svg)](https://doi.org/10.5281/zenodo.24585902)
 
+- Paper (PDF): [`paper/paper.pdf`](paper/paper.pdf), built from the source in `paper/`
 - Code v1.0.0, archived: [10.5281/zenodo.24586177](https://doi.org/10.5281/zenodo.24586177)
   (all versions: [10.5281/zenodo.24586176](https://doi.org/10.5281/zenodo.24586176))
 - Episode logs of the final runs: [10.5281/zenodo.24585902](https://doi.org/10.5281/zenodo.24585902)
@@ -46,7 +47,7 @@ stfr/                  the experiment (package; CLI `stfr`)
   data/                dev, testA and testB task splits; SEALED.json holds their hashes
 tests/                 unit tests (pytest)
 results/results.json   every number in the paper, aggregated from the final runs
-paper/                 LaTeX source; paper/generated/ is written by `stfr assets`
+paper/                 LaTeX source and the built paper.pdf; paper/generated/ is written by `stfr assets`
 PREREGISTRATION.md     the analysis plan, fixed before the test split was run
 ```
 
