@@ -3,10 +3,12 @@
 Code, data and paper source for **"When Should a Tool Agent Recover? Comparing Triggers for Silent Tool
 Faults with Recovery Held Fixed"** (Rupak Kumar, AvantaLabs AI, 2026).
 
+[![Preprint DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24590562.svg)](https://doi.org/10.5281/zenodo.24590562)
 [![Code DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24586177.svg)](https://doi.org/10.5281/zenodo.24586177)
 [![Logs DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24585902.svg)](https://doi.org/10.5281/zenodo.24585902)
 
-- Paper (PDF): [`paper/paper.pdf`](paper/paper.pdf), built from the source in `paper/`
+- Paper (PDF): [`paper/paper.pdf`](paper/paper.pdf), built from the source in `paper/`;
+  preprint on Zenodo: [10.5281/zenodo.24590562](https://doi.org/10.5281/zenodo.24590562)
 - Code v1.0.0, archived: [10.5281/zenodo.24586177](https://doi.org/10.5281/zenodo.24586177)
   (all versions: [10.5281/zenodo.24586176](https://doi.org/10.5281/zenodo.24586176))
 - Episode logs of the final runs: [10.5281/zenodo.24585902](https://doi.org/10.5281/zenodo.24585902)
@@ -116,7 +118,22 @@ episodes are the Zenodo logs. Use `stfr dev --config stfr/configs/dev.json` for 
 
 ## Citing
 
-See [`CITATION.cff`](CITATION.cff). The arXiv identifier will be added here once the paper is posted.
+Please cite the paper:
+
+```bibtex
+@misc{kumar2026recover,
+  title     = {When Should a Tool Agent Recover? Comparing Triggers for Silent Tool Faults with Recovery Held Fixed},
+  author    = {Kumar, Rupak},
+  year      = {2026},
+  publisher = {Zenodo},
+  note      = {Preprint},
+  doi       = {10.5281/zenodo.24590562},
+  url       = {https://doi.org/10.5281/zenodo.24590562}
+}
+```
+
+[`CITATION.cff`](CITATION.cff) has the same entry plus the code and logs DOIs. The arXiv identifier will
+be added once the paper is posted there.
 
 ## Licence
 
